@@ -1,6 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <MediaElement x:Key="ContentVideo1" Source="pack://siteoforigin:,,,/Resources/Videos/What you get.mp4" />
+    <MediaElement x:Key="Content1" Source="pack://siteoforigin:,,,/Resources/Videos/What you get.mp4" />
+    <MediaElement x:Key="Content2" Source="pack://siteoforigin:,,,/Resources/Videos/Zen Anna.mp4" />
+    <MediaElement x:Key="Content3" Source="pack://siteoforigin:,,,/Resources/Videos/Zen Windows No Down Payment.mp4" />
+    <MediaElement x:Key="Content4" Source="pack://siteoforigin:,,,/Resources/Videos/Zen Windows November.mp4" />
 
 </ResourceDictionary>
