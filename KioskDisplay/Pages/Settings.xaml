@@ -1,0 +1,30 @@
+﻿<Page x:Class="KioskDisplay.Pages.Settings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:vm="clr-namespace:KioskDisplay.ViewModels"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" d:DesignHeight="480" d:DesignWidth="640"
+      Title="Settings">
+    
+    <Page.DataContext>
+        <vm:SettingsViewModel />
+    </Page.DataContext>
+    
+    <DockPanel LastChildFill="True">
+        <Border DockPanel.Dock="Top">
+            <TextBlock Text="Settings" Style="{StaticResource PageTitle}" />
+        </Border>
+        <Border>
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <Button Command="{Binding CloseCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource GlyphText}">&#xe21c;</TextBlock>
+                        <TextBlock Text="Exit" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Border>
+    </DockPanel>
+</Page>

@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Image x:Key="ContentImage1" Source="pack://siteoforigin:,,,/Resources/Images/20150225_162731 (2).jpg" />
+    <Image x:Key="ContentImage2" Source="pack://siteoforigin:,,,/Resources/Images/ceresia.jpg" />
+</ResourceDictionary>

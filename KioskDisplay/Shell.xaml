@@ -12,11 +12,6 @@
             <Setter Property="Padding" Value="4" />
             <Setter Property="FontSize" Value="20" />
         </Style>
-        <Style x:Key="GlyphText" TargetType="TextBlock">
-            <Setter Property="Padding" Value="8" />
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="FontFamily" Value="Segoe UI Symbol" />
-        </Style>        
     </Window.Resources>
     
     <Window.DataContext>
@@ -84,7 +79,8 @@
                     <Button Command="{Binding Path=NavigateNextCommand}">
                         <TextBlock Style="{StaticResource GlyphText}">&#xE111;</TextBlock>
                     </Button>
-                    <Button Command="{Binding Path=CloseCommand}">
+                    <Button Command="{Binding Path=NavigateToCommand}"
+                            CommandParameter="./Pages/Settings.xaml">
                         <TextBlock Style="{StaticResource GlyphText}">&#xE115;</TextBlock>
                     </Button>
                 </StackPanel>
@@ -92,7 +88,9 @@
             <Border BorderBrush="{StaticResource ButtonBorderBrush}"
                     BorderThickness="1"
                     Padding="2">
-                <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden" Source="{Binding CurrentPage}" />
+                <Frame x:Name="mainFrame" 
+                       NavigationUIVisibility="Hidden" 
+                       Source="{Binding CurrentPage}" />
             </Border>
         </DockPanel>
     </Border>

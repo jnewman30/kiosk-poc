@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Behaviours\FrameNavigate.cs" />
+    <Compile Include="Controls\MediaContentDataTemplateSelector.cs" />
     <Compile Include="Pages\Awards.xaml.cs">
       <DependentUpon>Awards.xaml</DependentUpon>
     </Compile>
@@ -90,12 +91,18 @@
     <Compile Include="Pages\Reviews.xaml.cs">
       <DependentUpon>Reviews.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Videos.xaml.cs">
       <DependentUpon>Videos.xaml</DependentUpon>
     </Compile>
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\PageViewModelBase.cs" />
+    <Compile Include="ViewModels\ScrollerViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
   </ItemGroup>
@@ -154,10 +161,46 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Videos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Content Include="Resources\Awards.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Coupons.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\HowItWorks.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Partners.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\PriceQuote.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ProductLines.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Reviews.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Videos.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Page Include="Shell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
