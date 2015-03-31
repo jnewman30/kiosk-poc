@@ -5,11 +5,32 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" d:DesignHeight="480" d:DesignWidth="640"
       Title="Awards">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://siteoforigin:,,,/Resources/Awards.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+                <Setter Property="Margin" Value="4,2" />
+                <Setter Property="Padding" Value="4" />
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
+
     <DockPanel LastChildFill="True">
         <Border DockPanel.Dock="Top">
             <TextBlock Text="Awards" Style="{StaticResource PageTitle}" />
         </Border>
         <Border>
+            <WrapPanel HorizontalAlignment="Center"
+                       VerticalAlignment="Center">
+                <ContentPresenter Content="{StaticResource Award1}" Width="200" Margin="8" />
+
+                <ContentPresenter Content="{StaticResource Award2}" Width="200" Margin="8" />
+            </WrapPanel>
         </Border>
     </DockPanel>
 </Page>

@@ -1,4 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Image x:Key="Award1" Source="pack://siteoforigin:,,,/Resources/Images/bestofhouzz.JPG" />
+    <Image x:Key="Award2" Source="pack://siteoforigin:,,,/Resources/Images/ssa_color_highres_jpeg_2014.jpg" />
     
 </ResourceDictionary>
