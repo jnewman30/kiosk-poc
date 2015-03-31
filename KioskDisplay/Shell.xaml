@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:vm="clr-namespace:KioskDisplay.ViewModels"
-        Title="Shell" Height="300" Width="300" Background="Black"
+        Title="Shell" Height="480" Width="640" Background="Black"
         WindowStyle="None" WindowState="Maximized">
 
     <Window.Resources>
@@ -22,9 +22,24 @@
         <vm:ShellViewModel />
     </Window.DataContext>
 
-    <Border>
+    <Border Background="{StaticResource AccordionBackgroundBrush}">
         <DockPanel LastChildFill="True">
-            <Border DockPanel.Dock="Top">
+            <Border DockPanel.Dock="Left"
+                    Padding="8">
+                <StackPanel>
+                    <Image Source="./Content/logo.jpg" Width="200" Height="100" />
+                    <Button>Price Quote</Button>
+                    <Button>How It Works</Button>
+                    <Button>Awards</Button>
+                    <Button>Product Lines</Button>
+                    <Button>Videos</Button>
+                    <Button>Reviews</Button>
+                    <Button>Partners</Button>
+                    <Button>Coupons</Button>
+                </StackPanel>
+            </Border>
+            <Border DockPanel.Dock="Top"
+                    Padding="4">
                 <StackPanel Orientation="Horizontal" 
                     HorizontalAlignment="Center" 
                     VerticalAlignment="Center">
@@ -36,7 +51,8 @@
                     </Button>
                 </StackPanel>
             </Border>
-            <Border DockPanel.Dock="Bottom">
+            <Border DockPanel.Dock="Bottom"
+                    Padding="4">
                 <StackPanel Orientation="Horizontal" 
                     HorizontalAlignment="Center" 
                     VerticalAlignment="Center">
@@ -51,7 +67,9 @@
                     </Button>
                 </StackPanel>
             </Border>
-            <Border Background="Black" BorderBrush="Black" BorderThickness="1">
+            <Border BorderBrush="{StaticResource ButtonBorderBrush}"
+                    BorderThickness="1"
+                    Padding="2">
                 <Frame NavigationUIVisibility="Hidden" Source="{Binding CurrentPage}" />
             </Border>
         </DockPanel>
