@@ -13,19 +13,49 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://siteoforigin:,,,/Resources/HowItWorks.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+                <Setter Property="Margin" Value="4,2" />
+                <Setter Property="Padding" Value="4" />
+                <Setter Property="FontSize" Value="20" />
+            </Style>
         </ResourceDictionary>
     </Page.Resources>
     
     <Page.DataContext>
-        <vm:ScrollerViewModel />
+        <vm:HowItWorksViewModel />
     </Page.DataContext>
     
     <DockPanel LastChildFill="True">
         <Border DockPanel.Dock="Top">
             <TextBlock Text="How It Works" Style="{StaticResource PageTitle}" />
         </Border>
+        <Border DockPanel.Dock="Top">
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <Button Command="{Binding Path=PreviousItemCommand}">
+                    <TextBlock Style="{StaticResource GlyphText}">&#xE112;</TextBlock>
+                </Button>
+                <Button Command="{Binding Path=NextItemCommand}">
+                    <TextBlock Style="{StaticResource GlyphText}">&#xE111;</TextBlock>
+                </Button>
+            </StackPanel>
+        </Border>
+        <Border DockPanel.Dock="Bottom">
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <Button Command="{Binding Path=PreviousItemCommand}">
+                    <TextBlock Style="{StaticResource GlyphText}">&#xE112;</TextBlock>
+                </Button>
+                <Button Command="{Binding Path=NextItemCommand}">
+                    <TextBlock Style="{StaticResource GlyphText}">&#xE111;</TextBlock>
+                </Button>
+            </StackPanel>
+        </Border>
         <Border>
-            <ContentPresenter Content="{StaticResource ContentImage3}" />
+            <ContentPresenter Content="{Binding CurrentItem}" />
         </Border>
     </DockPanel>
 </Page>

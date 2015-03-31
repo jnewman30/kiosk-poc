@@ -53,9 +53,12 @@
                     <Button Content="Coupons"
                             Command="{Binding NavigateToCommand}"
                             CommandParameter=".\Pages\Coupons.xaml" />
+                    <Button Content="Settings"
+                            Command="{Binding NavigateToCommand}"
+                            CommandParameter=".\Pages\Settings.xaml" />
                 </StackPanel>
             </Border>
-            <Border DockPanel.Dock="Top"
+            <!--<Border DockPanel.Dock="Top"
                     Padding="4">
                 <StackPanel Orientation="Horizontal" 
                     HorizontalAlignment="Center" 
@@ -84,7 +87,7 @@
                         <TextBlock Style="{StaticResource GlyphText}">&#xE115;</TextBlock>
                     </Button>
                 </StackPanel>
-            </Border>
+            </Border>-->
             <Border BorderBrush="{StaticResource ButtonBorderBrush}"
                     BorderThickness="1"
                     Padding="2">
