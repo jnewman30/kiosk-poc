@@ -3,13 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:vm="clr-namespace:KioskDisplay.ViewModels"
-        Title="Shell" Height="480" Width="640" Background="Black"
+        Title="Shell" Height="600" Width="800" Background="Black"
         WindowStyle="None" WindowState="Maximized">
 
     <Window.Resources>
         <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
             <Setter Property="Margin" Value="4,2" />
-            <Setter Property="Padding" Value="8" />
+            <Setter Property="Padding" Value="4" />
             <Setter Property="FontSize" Value="20" />
         </Style>
         <Style x:Key="GlyphText" TargetType="TextBlock">
@@ -33,15 +33,31 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center">
                 <StackPanel>
-                    <Image Source="./Content/logo.jpg" Width="200" Height="100" />
-                    <Button>Price Quote</Button>
-                    <Button>How It Works</Button>
-                    <Button>Awards</Button>
-                    <Button>Product Lines</Button>
-                    <Button>Videos</Button>
-                    <Button>Reviews</Button>
-                    <Button>Partners</Button>
-                    <Button>Coupons</Button>
+                    <Image Source="./Content/logo.jpg" Width="220" Height="100" />
+                    <Button Content="Price Quote"
+                            Command="{Binding NavigateToCommand}" 
+                            CommandParameter=".\Pages\PriceQuote.xaml" />
+                    <Button Content="How It Works" 
+                            Command="{Binding NavigateToCommand}" 
+                            CommandParameter=".\Pages\HowItWorks.xaml" />
+                    <Button Content="Awards" 
+                            Command="{Binding NavigateToCommand}"
+                            CommandParameter=".\Pages\Awards.xaml" />
+                    <Button Content="Product Lines" 
+                            Command="{Binding NavigateToCommand}"
+                            CommandParameter=".\Pages\ProductLines.xaml" />
+                    <Button Content="Videos"
+                            Command="{Binding NavigateToCommand}"
+                            CommandParameter=".\Pages\Videos.xaml" />
+                    <Button Content="Reviews"
+                            Command="{Binding NavigateToCommand}"
+                            CommandParameter=".\Pages\Reviews.xaml" />
+                    <Button Content="Partners"
+                            Command="{Binding NavigateToCommand}"
+                            CommandParameter=".\Pages\Partners.xaml" />
+                    <Button Content="Coupons"
+                            Command="{Binding NavigateToCommand}"
+                            CommandParameter=".\Pages\Coupons.xaml" />
                 </StackPanel>
             </Border>
             <Border DockPanel.Dock="Top"
@@ -76,7 +92,7 @@
             <Border BorderBrush="{StaticResource ButtonBorderBrush}"
                     BorderThickness="1"
                     Padding="2">
-                <Frame NavigationUIVisibility="Hidden" Source="{Binding CurrentPage}" />
+                <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden" Source="{Binding CurrentPage}" />
             </Border>
         </DockPanel>
     </Border>

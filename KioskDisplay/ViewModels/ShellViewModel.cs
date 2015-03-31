@@ -33,13 +33,28 @@ namespace KioskDisplay.ViewModels
 
         public ShellViewModel()
         {
-            if (!DesignerProperties.GetIsInDesignMode(this))
-            {
-                Pages = new ObservableCollection<string>(
-                    Directory.GetFiles("./Slides", "*.xaml", SearchOption.TopDirectoryOnly));
+            //if (!DesignerProperties.GetIsInDesignMode(this))
+            //{
+            //    Pages = new ObservableCollection<string>(
+            //        Directory.GetFiles("./Slides", "*.xaml", SearchOption.TopDirectoryOnly));
 
-                _currentPageIndex = 0;
-                CurrentPage = Pages[_currentPageIndex];
+            //    _currentPageIndex = 0;
+            //    CurrentPage = Pages[_currentPageIndex];
+            //}
+        }
+
+        RelayCommand _navigateToCommand;
+        public ICommand NavigateToCommand
+        {
+            get
+            {
+                if(_navigateToCommand == null)
+                {
+                    _navigateToCommand = new RelayCommand(
+                        p => CurrentPage = p.ToString(), 
+                        p => !string.IsNullOrEmpty(p.ToString()));
+                }
+                return _navigateToCommand;
             }
         }
 
