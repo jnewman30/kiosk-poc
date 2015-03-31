@@ -5,11 +5,21 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" d:DesignHeight="480" d:DesignWidth="640"
       Title="Videos">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://siteoforigin:,,,/Resources/Videos.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
     <DockPanel LastChildFill="True">
         <Border DockPanel.Dock="Top">
             <TextBlock Text="Videos" Style="{StaticResource PageTitle}" />
         </Border>
         <Border>
+            <ContentPresenter Content="{StaticResource ContentVideo1}" />
         </Border>
     </DockPanel>
 </Page>

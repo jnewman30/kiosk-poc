@@ -3,4 +3,8 @@
 
     <Image x:Key="ContentImage1" Source="pack://siteoforigin:,,,/Resources/Images/20150225_162731 (2).jpg" />
     <Image x:Key="ContentImage2" Source="pack://siteoforigin:,,,/Resources/Images/ceresia.jpg" />
+    <Image x:Key="ContentImage3" Source="pack://siteoforigin:,,,/Resources/Images/dan M.jpg" />
+    <Image x:Key="ContentImage4" Source="pack://siteoforigin:,,,/Resources/Images/freibeforenafter.jpg" />
+    <Image x:Key="ContentImage5" Source="pack://siteoforigin:,,,/Resources/Images/judd2.jpg" />
+
 </ResourceDictionary>

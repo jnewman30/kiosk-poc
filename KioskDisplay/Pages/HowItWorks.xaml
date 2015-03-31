@@ -25,7 +25,7 @@
             <TextBlock Text="How It Works" Style="{StaticResource PageTitle}" />
         </Border>
         <Border>
-            <ContentPresenter Content="{StaticResource ContentImage1}" />
+            <ContentPresenter Content="{StaticResource ContentImage3}" />
         </Border>
     </DockPanel>
 </Page>
