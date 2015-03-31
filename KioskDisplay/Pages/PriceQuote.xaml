@@ -6,10 +6,6 @@
       mc:Ignorable="d" d:DesignHeight="480" d:DesignWidth="640"
       Title="Price Quote">
     <DockPanel LastChildFill="True">
-        <Border DockPanel.Dock="Top">
-            <TextBlock Text="Price Quote" Style="{StaticResource PageTitle}" />
-        </Border>
-        <Border>
-        </Border>
+        <Frame Source="https://docs.google.com/forms/d/1s_VAuVSMxNUMkGvOQKsXQREwpridEL6C3oU1-gW8LTw/viewform" />
     </DockPanel>
 </Page>
