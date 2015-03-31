@@ -12,5 +12,5 @@
 			<GradientStop Offset="1" Color="#9DAF85" />
 		</LinearGradientBrush>
 	</Page.Background>
-	<Image Source="./Images/zenaugust.jpg" />
+    <Image Source="pack://siteoforigin:,,,/Slides/Images/zenaugust.jpg" />
 </Page>
