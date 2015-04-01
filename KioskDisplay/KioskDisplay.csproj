@@ -102,6 +102,7 @@
     </Compile>
     <Compile Include="ViewModels\HowItWorksViewModel.cs" />
     <Compile Include="ViewModels\PageViewModelBase.cs" />
+    <Compile Include="ViewModels\ReviewsViewModel.cs" />
     <Compile Include="ViewModels\ScrollerViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
