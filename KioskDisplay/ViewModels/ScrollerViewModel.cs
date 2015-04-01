@@ -57,6 +57,10 @@ namespace KioskDisplay.ViewModels
 
         protected abstract ResourceDictionary LoadContent();
 
+        protected virtual void OnCurrentItemChanged(object oldItem, object newItem)
+        {
+        }
+
         public RelayCommand _nextItemCommand;
         public ICommand NextItemCommand
         {
@@ -106,7 +110,11 @@ namespace KioskDisplay.ViewModels
             {
                 CurrentIndex = Content.Count - 1;
             }
-            CurrentItem = Content[CurrentIndex];
+            var oldItem = CurrentItem;
+            var newItem = Content[CurrentIndex];
+            CurrentItem = newItem;
+            OnPropertyChanged("CurrentItem");
+            OnCurrentItemChanged(oldItem, newItem);
         }
 
         private bool NextItemCanExecute()
@@ -128,7 +136,11 @@ namespace KioskDisplay.ViewModels
             {
                 CurrentIndex = 0;
             }
-            CurrentItem = Content[CurrentIndex];
+            var oldItem = CurrentItem;
+            var newItem = Content[CurrentIndex];
+            CurrentItem = newItem;
+            OnPropertyChanged("CurrentItem");
+            OnCurrentItemChanged(oldItem, newItem);
         }
     }
 }
