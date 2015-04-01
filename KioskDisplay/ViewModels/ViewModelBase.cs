@@ -5,9 +5,9 @@ using System.Windows;
 
 namespace KioskDisplay.ViewModels
 {
-    public class ViewModelBase : DependencyObject
+    public class ViewModelBase : DependencyObject, INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
 
         protected virtual void OnPropertyChanged(string propertyName)
         {
