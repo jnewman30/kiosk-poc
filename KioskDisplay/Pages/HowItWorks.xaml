@@ -30,18 +30,6 @@
         <Border DockPanel.Dock="Top">
             <TextBlock Text="How It Works" Style="{StaticResource PageTitle}" />
         </Border>
-        <Border DockPanel.Dock="Top">
-            <StackPanel Orientation="Horizontal" 
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
-                <Button Command="{Binding Path=PreviousItemCommand}">
-                    <TextBlock Style="{StaticResource GlyphText}">&#xE112;</TextBlock>
-                </Button>
-                <Button Command="{Binding Path=NextItemCommand}">
-                    <TextBlock Style="{StaticResource GlyphText}">&#xE111;</TextBlock>
-                </Button>
-            </StackPanel>
-        </Border>
         <Border DockPanel.Dock="Bottom">
             <StackPanel Orientation="Horizontal" 
                         HorizontalAlignment="Center"

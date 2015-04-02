@@ -53,6 +53,7 @@ namespace KioskDisplay.ViewModels
 
             CurrentItem = Content[0];
             CurrentIndex = 0;
+            OnCurrentItemChanged(null, CurrentItem);
         }
 
         protected abstract ResourceDictionary LoadContent();
