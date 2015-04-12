@@ -94,6 +94,7 @@
     <Compile Include="Pages\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\TouchPage.cs" />
     <Compile Include="Pages\Videos.xaml.cs">
       <DependentUpon>Videos.xaml</DependentUpon>
     </Compile>

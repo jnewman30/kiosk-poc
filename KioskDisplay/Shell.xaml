@@ -63,36 +63,6 @@
                             CommandParameter=".\Pages\Settings.xaml" />
                 </StackPanel>
             </Border>
-            <!--<Border DockPanel.Dock="Top"
-                    Padding="4">
-                <StackPanel Orientation="Horizontal" 
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Center">
-                    <Button Command="{Binding Path=NavigatePreviousCommand}">
-                        <TextBlock Style="{StaticResource GlyphText}">&#xE112;</TextBlock>
-                    </Button>
-                    <Button Command="{Binding Path=NavigateNextCommand}">
-                        <TextBlock Style="{StaticResource GlyphText}">&#xE111;</TextBlock>
-                    </Button>
-                </StackPanel>
-            </Border>
-            <Border DockPanel.Dock="Bottom"
-                    Padding="4">
-                <StackPanel Orientation="Horizontal" 
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Center">
-                    <Button Command="{Binding Path=NavigatePreviousCommand}">
-                        <TextBlock Style="{StaticResource GlyphText}">&#xE112;</TextBlock>
-                    </Button>
-                    <Button Command="{Binding Path=NavigateNextCommand}">
-                        <TextBlock Style="{StaticResource GlyphText}">&#xE111;</TextBlock>
-                    </Button>
-                    <Button Command="{Binding Path=NavigateToCommand}"
-                            CommandParameter="./Pages/Settings.xaml">
-                        <TextBlock Style="{StaticResource GlyphText}">&#xE115;</TextBlock>
-                    </Button>
-                </StackPanel>
-            </Border>-->
             <Border BorderBrush="{StaticResource ButtonBorderBrush}"
                     BorderThickness="1"
                     Padding="2">

@@ -1,12 +1,14 @@
-﻿<Page x:Class="KioskDisplay.Pages.Videos"
+﻿<p:TouchPage x:Class="KioskDisplay.Pages.Videos"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      xmlns:p="clr-namespace:KioskDisplay.Pages"
       xmlns:vm="clr-namespace:KioskDisplay.ViewModels"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" d:DesignHeight="480" d:DesignWidth="640"
       Title="Videos">
-
+   
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -25,6 +27,17 @@
     <Page.DataContext>
         <vm:VideosViewModel />
     </Page.DataContext>
+
+    
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="TouchSwipeLeft">
+            <i:InvokeCommandAction Command="{Binding NextItemCommand}" />
+        </i:EventTrigger>
+        <i:EventTrigger EventName="TouchSwipeRight">
+            <i:InvokeCommandAction Command="{Binding PreviousItemCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     
     <DockPanel LastChildFill="True">
         <Border DockPanel.Dock="Top">
@@ -55,4 +68,4 @@
             <ContentPresenter x:Name="videoContent" Content="{Binding CurrentItem}" />
         </Border>
     </DockPanel>
-</Page>
+</p:TouchPage>
