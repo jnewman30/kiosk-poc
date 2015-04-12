@@ -14,8 +14,13 @@ namespace KioskDisplay
         private bool _mainWindowLoaded = false;
         private bool _isUserActive = false;
 
-        public event EventHandler UserIdle = delegate { };
-        public event EventHandler UserActive = delegate { };
+        internal event EventHandler UserIdle = delegate { };
+        internal event EventHandler UserActive = delegate { };
+
+        internal KioskDisplay.Properties.Settings Settings
+        {
+            get { return KioskDisplay.Properties.Settings.Default; }
+        }
 
         public App()
         {
@@ -34,7 +39,7 @@ namespace KioskDisplay
             InputManager.Current.PreProcessInput += OnActivity;
 
             _activityTimer = new DispatcherTimer(
-                TimeSpan.FromMinutes(1),
+                TimeSpan.FromMinutes(Settings.InactivityTimerIntervalMinutes),
                 DispatcherPriority.ApplicationIdle,
                 OnInactivity,
                 Application.Current.Dispatcher);
