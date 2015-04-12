@@ -1,7 +1,5 @@
 ﻿using KioskDisplay.Commands;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.IO;
 using System.Windows;
 using System.Windows.Input;
 
@@ -9,6 +7,16 @@ namespace KioskDisplay.ViewModels
 {
     public class ShellViewModel : ViewModelBase
     {
+        public static DependencyProperty StatusMessageProperty =
+            DependencyProperty.Register("StatusMessage",
+                typeof(string), typeof(ShellViewModel));
+
+        public string StatusMessage
+        {
+            get { return (string)GetValue(StatusMessageProperty); }
+            set { SetValue(StatusMessageProperty, value); }
+        }
+
         public static DependencyProperty CurrentPageProperty =
             DependencyProperty.Register("CurrentPage",
                 typeof(string), typeof(ShellViewModel));
@@ -22,6 +30,11 @@ namespace KioskDisplay.ViewModels
         public ShellViewModel()
         {
             CurrentPage = "./Pages/HowItWorks.xaml";
+
+            if(DesignerProperties.GetIsInDesignMode(this))
+            {
+                return;
+            }
         }
 
         RelayCommand _navigateToCommand;
@@ -37,6 +50,16 @@ namespace KioskDisplay.ViewModels
                 }
                 return _navigateToCommand;
             }
+        }
+
+        protected override void OnUserIdle()
+        {
+            StatusMessage = "User Idle";
+        }
+
+        protected override void OnUserActive()
+        {
+            StatusMessage = "User Active";
         }
     }
 }

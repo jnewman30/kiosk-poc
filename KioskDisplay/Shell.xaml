@@ -29,6 +29,11 @@
                     VerticalAlignment="Center">
                 <StackPanel>
                     <Image Source="./Content/logo.jpg" Width="220" Height="100" />
+                    
+                    <Label>
+                        <TextBlock Text="{Binding StatusMessage}" />
+                    </Label>
+                    
                     <Button Content="Price Quote"
                             Command="{Binding NavigateToCommand}" 
                             CommandParameter=".\Pages\PriceQuote.xaml" />
