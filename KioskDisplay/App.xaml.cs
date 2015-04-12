@@ -43,7 +43,6 @@ namespace KioskDisplay
                 DispatcherPriority.ApplicationIdle,
                 OnInactivity,
                 Application.Current.Dispatcher);
-            _activityTimer.Tick += OnInactivity;
         }
 
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -53,7 +52,7 @@ namespace KioskDisplay
 
         void OnActivity(object sender, PreProcessInputEventArgs e)
         {
-            if (!_mainWindowLoaded)
+            if (!_mainWindowLoaded || _isUserActive)
             {
                 return;
             }
