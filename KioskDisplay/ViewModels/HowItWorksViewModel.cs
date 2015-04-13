@@ -6,7 +6,7 @@ namespace KioskDisplay.ViewModels
     {
         protected override ResourceDictionary LoadContent()
         {
-            return GetResourceDictionary("Resources/HowItWorks.xaml");
+            return GetResourceDictionaryFromFolder("./Resources/HowItWorks");
         }
     }
 }

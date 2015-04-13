@@ -10,18 +10,11 @@
       Title="Videos">
    
     <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://siteoforigin:,,,/Resources/Videos.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-
-            <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
-                <Setter Property="Margin" Value="4,2" />
-                <Setter Property="Padding" Value="4" />
-                <Setter Property="FontSize" Value="20" />
-            </Style>
-
-        </ResourceDictionary>
+        <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+            <Setter Property="Margin" Value="4,2" />
+            <Setter Property="Padding" Value="4" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
     </Page.Resources>
 
     <Page.DataContext>

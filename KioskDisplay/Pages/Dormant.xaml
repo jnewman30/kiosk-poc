@@ -1,0 +1,19 @@
+﻿<p:TouchPage x:Class="KioskDisplay.Pages.Doormant"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:vm="clr-namespace:KioskDisplay.ViewModels"
+             xmlns:p="clr-namespace:KioskDisplay.Pages"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300"
+             Title="Dormant">
+    
+    <Page.DataContext>
+        <vm:DormantViewModel />
+    </Page.DataContext>
+
+    <Border>
+        <ContentPresenter Content="{Binding CurrentItem}" />
+    </Border>
+</p:TouchPage>

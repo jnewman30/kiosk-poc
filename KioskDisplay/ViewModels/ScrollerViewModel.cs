@@ -1,8 +1,10 @@
 ﻿using KioskDisplay.Commands;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
+using System.Linq;
 
 namespace KioskDisplay.ViewModels
 {
@@ -35,6 +37,8 @@ namespace KioskDisplay.ViewModels
             {
                 return;
             }
+
+            App.Current.Resources.MergedDictionaries.Add(resources);
 
             foreach (var key in resources.Keys)
             {

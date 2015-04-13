@@ -5,7 +5,7 @@ namespace KioskDisplay.ViewModels
     {
         protected override System.Windows.ResourceDictionary LoadContent()
         {
-            return GetResourceDictionary("Resources/Reviews.xaml");
+            return GetResourceDictionaryFromFolder("./Resources/Reviews"); ;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace KioskDisplay.ViewModels
     {
         protected override System.Windows.ResourceDictionary LoadContent()
         {
-            return GetResourceDictionary("Resources/Videos.xaml");
+            return GetResourceDictionaryFromFolder("./Resources/Videos", true);
         }
 
         RelayCommand _playVideoCommand;

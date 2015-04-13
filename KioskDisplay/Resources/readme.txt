@@ -1,0 +1,1 @@
+﻿This folder should contain folders for each button and under each folder is the media content to be displayed for the given screen.

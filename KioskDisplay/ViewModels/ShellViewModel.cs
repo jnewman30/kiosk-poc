@@ -55,6 +55,7 @@ namespace KioskDisplay.ViewModels
         protected override void OnUserIdle()
         {
             StatusMessage = "User Idle";
+            CurrentPage = "./Pages/Dormant.xaml";
         }
 
         protected override void OnUserActive()

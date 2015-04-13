@@ -31,5 +31,14 @@ namespace KioskDisplay.Properties {
                 return ((double)(this["InactivityTimerIntervalMinutes"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public double AutoContentScrollIntervalSeconds {
+            get {
+                return ((double)(this["AutoContentScrollIntervalSeconds"]));
+            }
+        }
     }
 }

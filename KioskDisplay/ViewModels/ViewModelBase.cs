@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.ComponentModel;
+using System.IO;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace KioskDisplay.ViewModels
 {
@@ -61,6 +64,41 @@ namespace KioskDisplay.ViewModels
             }
             catch { }
             return null;
+        }
+
+        protected ResourceDictionary GetResourceDictionaryFromFolder(string folder, bool isVideo = false)
+        {
+            var resources = new ResourceDictionary();
+
+            try
+            {
+                var viewModelName = this.GetType().Name;
+
+                var files = Directory
+                    .GetFiles(Path.GetFullPath(folder))
+                    .OrderBy(filename => filename);
+
+                var count = 1;
+                foreach (var file in files)
+                {
+                    var key = string.Format("Content-{0}-{1}", viewModelName, count);
+                    var content = new MediaElement()
+                    {
+                        Source = new Uri(file, UriKind.Absolute)
+                    };
+
+                    if (isVideo)
+                    {
+                        content.LoadedBehavior = MediaState.Manual;
+                    }
+
+                    resources.Add(key, content);
+                    count++;
+                }
+            }
+            catch { }
+
+            return resources;
         }
     }
 }

@@ -7,17 +7,11 @@
       Title="Awards">
 
     <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://siteoforigin:,,,/Resources/Awards.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-
-            <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
-                <Setter Property="Margin" Value="4,2" />
-                <Setter Property="Padding" Value="4" />
-                <Setter Property="FontSize" Value="20" />
-            </Style>
-        </ResourceDictionary>
+        <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+            <Setter Property="Margin" Value="4,2" />
+            <Setter Property="Padding" Value="4" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
     </Page.Resources>
 
     <DockPanel LastChildFill="True">
@@ -27,9 +21,6 @@
         <Border>
             <WrapPanel HorizontalAlignment="Center"
                        VerticalAlignment="Center">
-                <ContentPresenter Content="{StaticResource Award1}" Width="200" Margin="8" />
-
-                <ContentPresenter Content="{StaticResource Award2}" Width="200" Margin="8" />
             </WrapPanel>
         </Border>
     </DockPanel>

@@ -9,21 +9,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" d:DesignHeight="480" d:DesignWidth="640"
              Title="How It Works">
-    
-    <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://siteoforigin:,,,/Resources/HowItWorks.xaml" />
-            </ResourceDictionary.MergedDictionaries>
 
-            <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
-                <Setter Property="Margin" Value="4,2" />
-                <Setter Property="Padding" Value="4" />
-                <Setter Property="FontSize" Value="20" />
-            </Style>
-        </ResourceDictionary>
+    <Page.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+            <Setter Property="Margin" Value="4,2" />
+            <Setter Property="Padding" Value="4" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
     </Page.Resources>
-    
+
     <Page.DataContext>
         <vm:HowItWorksViewModel />
     </Page.DataContext>
