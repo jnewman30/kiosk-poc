@@ -40,8 +40,7 @@ namespace KioskDisplay
             InputManager.Current.PreProcessInput += PreProcessInput;
 
             _activityTimer = new DispatcherTimer(
-                //TimeSpan.FromMinutes(Settings.InactivityTimerIntervalMinutes),
-                TimeSpan.FromSeconds(30d),
+                TimeSpan.FromMinutes(Settings.InactivityTimerIntervalMinutes),
                 DispatcherPriority.ApplicationIdle,
                 OnInactivity,
                 Application.Current.Dispatcher);
