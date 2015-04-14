@@ -1,6 +1,7 @@
 ﻿using KioskDisplay.Commands;
 using System.Windows.Controls;
 using System.Windows.Input;
+using KioskDisplay.Extensions;
 
 namespace KioskDisplay.ViewModels
 {
@@ -8,7 +9,7 @@ namespace KioskDisplay.ViewModels
     {
         protected override System.Windows.ResourceDictionary LoadContent()
         {
-            return GetResourceDictionaryFromFolder("./Resources/Videos", true);
+            return GetResourceDictionaryFromFolder("./Resources/Videos");
         }
 
         RelayCommand _playVideoCommand;
@@ -16,7 +17,7 @@ namespace KioskDisplay.ViewModels
         {
             get
             {
-                if(_playVideoCommand == null)
+                if (_playVideoCommand == null)
                 {
                     _playVideoCommand = new RelayCommand(
                         PlayVideoExecute, PlayVideoCanExecute);
@@ -67,22 +68,26 @@ namespace KioskDisplay.ViewModels
 
         private void PlayVideo(object objVideo)
         {
-            var video = objVideo as MediaElement;
-            if(video == null)
+            if (objVideo is MediaElement)
             {
-                return;
+                var media = objVideo as MediaElement;
+                if (media.Source.IsVideo())
+                {
+                    media.Play();
+                }
             }
-            video.Play();
         }
 
         private void StopVideo(object objVideo)
         {
-            var video = objVideo as MediaElement;
-            if (video == null)
+            if (objVideo is MediaElement)
             {
-                return;
+                var media = objVideo as MediaElement;
+                if (media.Source.IsVideo())
+                {
+                    media.Stop();
+                }
             }
-            video.Stop();
         }
     }
 }

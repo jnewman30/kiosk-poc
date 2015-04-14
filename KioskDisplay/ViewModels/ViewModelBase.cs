@@ -5,6 +5,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using KioskDisplay.Extensions;
 
 namespace KioskDisplay.ViewModels
 {
@@ -66,7 +67,7 @@ namespace KioskDisplay.ViewModels
             return null;
         }
 
-        protected ResourceDictionary GetResourceDictionaryFromFolder(string folder, bool isVideo = false)
+        protected ResourceDictionary GetResourceDictionaryFromFolder(string folder)
         {
             var resources = new ResourceDictionary();
 
@@ -82,15 +83,14 @@ namespace KioskDisplay.ViewModels
                 foreach (var file in files)
                 {
                     var key = string.Format("Content-{0}-{1}", viewModelName, count);
+                    var mediaUri = new Uri(file, UriKind.Absolute);
                     var content = new MediaElement()
                     {
-                        Source = new Uri(file, UriKind.Absolute)
+                        Source = mediaUri,
+                        LoadedBehavior = mediaUri.IsVideo() 
+                            ? MediaState.Manual 
+                            : MediaState.Play
                     };
-
-                    if (isVideo)
-                    {
-                        content.LoadedBehavior = MediaState.Manual;
-                    }
 
                     resources.Add(key, content);
                     count++;

@@ -70,6 +70,7 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Behaviours\FrameNavigate.cs" />
     <Compile Include="Controls\MediaContentDataTemplateSelector.cs" />
+    <Compile Include="Extensions\UriExtensions.cs" />
     <Compile Include="Pages\Awards.xaml.cs">
       <DependentUpon>Awards.xaml</DependentUpon>
     </Compile>

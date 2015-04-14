@@ -13,6 +13,7 @@ namespace KioskDisplay
         private DispatcherTimer _activityTimer;
         private bool _mainWindowLoaded = false;
         private bool _isUserActive = false;
+        private Point _inactiveMousePosition = new Point(0, 0);
 
         internal event EventHandler UserIdle = delegate { };
         internal event EventHandler UserActive = delegate { };
@@ -36,10 +37,11 @@ namespace KioskDisplay
         {
             App.Current.MainWindow.Loaded += MainWindow_Loaded;
 
-            InputManager.Current.PreProcessInput += OnActivity;
+            InputManager.Current.PreProcessInput += PreProcessInput;
 
             _activityTimer = new DispatcherTimer(
-                TimeSpan.FromMinutes(Settings.InactivityTimerIntervalMinutes),
+                //TimeSpan.FromMinutes(Settings.InactivityTimerIntervalMinutes),
+                TimeSpan.FromSeconds(30d),
                 DispatcherPriority.ApplicationIdle,
                 OnInactivity,
                 Application.Current.Dispatcher);
@@ -50,7 +52,7 @@ namespace KioskDisplay
             _mainWindowLoaded = true;
         }
 
-        void OnActivity(object sender, PreProcessInputEventArgs e)
+        void PreProcessInput(object sender, PreProcessInputEventArgs e)
         {
             if (!_mainWindowLoaded || _isUserActive)
             {
@@ -59,20 +61,30 @@ namespace KioskDisplay
 
             // Only assume activity on mouse and keyboard events...
             var inputEventArgs = e.StagingItem.Input;
-            if (!(inputEventArgs is MouseEventArgs) && !(inputEventArgs is KeyboardEventArgs))
+            if (inputEventArgs is MouseEventArgs || inputEventArgs is KeyboardEventArgs)
             {
-                return;
-            }
+                //if(inputEventArgs is QueryCursorEventArgs)
+                //{
+                //    return;
+                //}
+                if(inputEventArgs is MouseEventArgs)
+                {
+                    var currentMousePosition = Mouse.GetPosition(App.Current.MainWindow);
+                    if (currentMousePosition == _inactiveMousePosition)
+                    {
+                        return;
+                    }
+                }
+                // If we have activity restart the timer...
+                _activityTimer.Stop();
+                _activityTimer.Start();
 
-            // If we have activity restart the timer...
-            _activityTimer.Stop();
-            _activityTimer.Start();
-
-            if (!_isUserActive)
-            {
-                _isUserActive = true;
-                // Fire the user active event...
-                UserActive(this, new EventArgs());
+                if (!_isUserActive)
+                {
+                    _isUserActive = true;
+                    // Fire the user active event...
+                    UserActive(this, new EventArgs());
+                }
             }
         }
 
@@ -82,10 +94,10 @@ namespace KioskDisplay
             {
                 return;
             }
+            _inactiveMousePosition = Mouse.GetPosition(App.Current.MainWindow);
             _isUserActive = false;
             // Fire the user idle event...
             UserIdle(this, new EventArgs());
         }
-
     }
 }
