@@ -8,5 +8,11 @@
     <Setting Name="AutoContentScrollIntervalSeconds" Type="System.Double" Scope="Application">
       <Value Profile="(Default)">5</Value>
     </Setting>
+    <Setting Name="InactiveVolume" Type="System.Double" Scope="Application">
+      <Value Profile="(Default)">0.25</Value>
+    </Setting>
+    <Setting Name="ActiveVolume" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.5</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

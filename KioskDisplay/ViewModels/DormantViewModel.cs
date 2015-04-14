@@ -39,6 +39,7 @@ namespace KioskDisplay.ViewModels
                         var mediaElement = (MediaElement)resource;
                         if (mediaElement.Source.IsVideo())
                         {
+                            mediaElement.Volume = Properties.Settings.Default.InactiveVolume;
                             mediaElement.MediaEnded += mediaElement_MediaEnded;
                         }
                     }

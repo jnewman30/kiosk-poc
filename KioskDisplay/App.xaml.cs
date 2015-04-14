@@ -63,10 +63,6 @@ namespace KioskDisplay
             var inputEventArgs = e.StagingItem.Input;
             if (inputEventArgs is MouseEventArgs || inputEventArgs is KeyboardEventArgs)
             {
-                //if(inputEventArgs is QueryCursorEventArgs)
-                //{
-                //    return;
-                //}
                 if(inputEventArgs is MouseEventArgs)
                 {
                     var currentMousePosition = Mouse.GetPosition(App.Current.MainWindow);

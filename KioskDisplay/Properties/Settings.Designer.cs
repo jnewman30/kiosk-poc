@@ -40,5 +40,26 @@ namespace KioskDisplay.Properties {
                 return ((double)(this["AutoContentScrollIntervalSeconds"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.25")]
+        public double InactiveVolume {
+            get {
+                return ((double)(this["InactiveVolume"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.5")]
+        public double ActiveVolume {
+            get {
+                return ((double)(this["ActiveVolume"]));
+            }
+            set {
+                this["ActiveVolume"] = value;
+            }
+        }
     }
 }
