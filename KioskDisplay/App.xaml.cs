@@ -10,7 +10,7 @@ namespace KioskDisplay
     /// </summary>
     public partial class App : Application
     {
-        private DispatcherTimer _activityTimer;
+        private DispatcherTimer _inavtivityTimer;
         private bool _mainWindowLoaded = false;
         private bool _isUserActive = false;
         private Point _inactiveMousePosition = new Point(0, 0);
@@ -39,18 +39,18 @@ namespace KioskDisplay
 
             InputManager.Current.PreProcessInput += PreProcessInput;
 
-            _activityTimer = new DispatcherTimer(
+            _inavtivityTimer = new DispatcherTimer(
                 TimeSpan.FromMinutes(Settings.InactivityTimerIntervalMinutes),
-                DispatcherPriority.ApplicationIdle,
+                DispatcherPriority.Send,
                 OnInactivity,
                 Application.Current.Dispatcher);
-            _activityTimer.IsEnabled = false;
+            _inavtivityTimer.IsEnabled = false;
         }
 
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             _mainWindowLoaded = true;
-            _activityTimer.Start();
+            _inavtivityTimer.Start();
         }
 
         void PreProcessInput(object sender, PreProcessInputEventArgs e)
@@ -69,8 +69,8 @@ namespace KioskDisplay
                     }
                 }
                 // If we have activity restart the timer...
-                _activityTimer.Stop();
-                _activityTimer.Start();
+                _inavtivityTimer.Stop();
+                _inavtivityTimer.Start();
 
                 if (!_isUserActive)
                 {
@@ -89,8 +89,20 @@ namespace KioskDisplay
             }
             _inactiveMousePosition = Mouse.GetPosition(App.Current.MainWindow);
             _isUserActive = false;
+            _inavtivityTimer.Stop();
+
             // Fire the user idle event...
             UserIdle(this, new EventArgs());
+        }
+
+        public void StartInactivityTimer()
+        {
+            _inavtivityTimer.Start();
+        }
+
+        public void StopInactivityTimer()
+        {
+            _inavtivityTimer.Stop();
         }
     }
 }
