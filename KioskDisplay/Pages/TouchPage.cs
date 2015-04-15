@@ -28,7 +28,7 @@ namespace KioskDisplay.Pages
                 return;
             }
 
-            var finalTouch = e.GetIntermediateTouchPoints(this).LastOrDefault();
+            var finalTouch = e.GetTouchPoint(this);
             if(finalTouch == null)
             {
                 return;
@@ -45,7 +45,9 @@ namespace KioskDisplay.Pages
                 finally
                 {
                     AlreadySwiped = false;
+                    TouchStart = null;
                 }
+                return;
             }
 
             // Swipe to left
@@ -59,7 +61,9 @@ namespace KioskDisplay.Pages
                 finally
                 {
                     AlreadySwiped = false;
+                    TouchStart = null;
                 }
+                return;
             }
         }
 
