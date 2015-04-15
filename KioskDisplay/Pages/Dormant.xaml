@@ -13,6 +13,12 @@
         <vm:DormantViewModel />
     </Page.DataContext>
 
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="UnLoaded">
+            <i:InvokeCommandAction Command="{Binding UnloadCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
     <Border>
         <ContentPresenter Content="{Binding CurrentItem}" />
     </Border>

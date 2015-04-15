@@ -44,23 +44,21 @@ namespace KioskDisplay
                 DispatcherPriority.ApplicationIdle,
                 OnInactivity,
                 Application.Current.Dispatcher);
+            _activityTimer.IsEnabled = false;
         }
 
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             _mainWindowLoaded = true;
+            _activityTimer.Start();
         }
 
         void PreProcessInput(object sender, PreProcessInputEventArgs e)
         {
-            if (!_mainWindowLoaded || _isUserActive)
-            {
-                return;
-            }
-
             // Only assume activity on mouse and keyboard events...
             var inputEventArgs = e.StagingItem.Input;
-            if (inputEventArgs is MouseEventArgs || inputEventArgs is KeyboardEventArgs)
+            if (inputEventArgs is MouseEventArgs || 
+                inputEventArgs is KeyboardEventArgs)
             {
                 if(inputEventArgs is MouseEventArgs)
                 {

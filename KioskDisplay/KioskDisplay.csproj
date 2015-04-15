@@ -83,6 +83,7 @@
     <Compile Include="Pages\HowItWorks.xaml.cs">
       <DependentUpon>HowItWorks.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PageBase.cs" />
     <Compile Include="Pages\Partners.xaml.cs">
       <DependentUpon>Partners.xaml</DependentUpon>
     </Compile>

@@ -6,6 +6,8 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using KioskDisplay.Extensions;
+using KioskDisplay.Commands;
+using System.Windows.Input;
 
 namespace KioskDisplay.ViewModels
 {
@@ -98,6 +100,24 @@ namespace KioskDisplay.ViewModels
                 }
                 NextItemCommand.Execute(null);
             }
+        }
+
+        private RelayCommand _unloadCommand;
+        public ICommand UnloadCommand
+        {
+            get
+            {
+                if(_unloadCommand == null)
+                {
+                    _unloadCommand = new RelayCommand(UnloadCommandExecute);
+                }
+                return _unloadCommand;
+            }
+        }
+
+        private void UnloadCommandExecute(object p)
+        {
+            _autoScrollTimer.IsEnabled = false;
         }
     }
 }
