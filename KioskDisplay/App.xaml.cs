@@ -11,7 +11,6 @@ namespace KioskDisplay
     public partial class App : Application
     {
         private DispatcherTimer _inavtivityTimer;
-        private bool _mainWindowLoaded = false;
         private bool _isUserActive = false;
         private Point _inactiveMousePosition = new Point(0, 0);
 
@@ -49,7 +48,6 @@ namespace KioskDisplay
 
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            _mainWindowLoaded = true;
             _inavtivityTimer.Start();
         }
 
@@ -72,24 +70,18 @@ namespace KioskDisplay
                 _inavtivityTimer.Stop();
                 _inavtivityTimer.Start();
 
-                if (!_isUserActive)
-                {
-                    _isUserActive = true;
-                    // Fire the user active event...
-                    UserActive(this, new EventArgs());
-                }
+                _isUserActive = true;
+
+                // Fire the user active event...
+                UserActive(this, new EventArgs());
             }
         }
 
         void OnInactivity(object sender, EventArgs e)
         {
-            if (!_isUserActive)
-            {
-                return;
-            }
+            _inavtivityTimer.Stop();
             _inactiveMousePosition = Mouse.GetPosition(App.Current.MainWindow);
             _isUserActive = false;
-            _inavtivityTimer.Stop();
 
             // Fire the user idle event...
             UserIdle(this, new EventArgs());
