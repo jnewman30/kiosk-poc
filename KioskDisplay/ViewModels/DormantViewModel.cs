@@ -14,7 +14,6 @@ namespace KioskDisplay.ViewModels
     public class DormantViewModel : ScrollerViewModel
     {
         private DispatcherTimer _autoScrollTimer;
-        private DispatcherTimer _videoTransitionTimer;
 
         public DormantViewModel() : base()
         {
@@ -24,34 +23,42 @@ namespace KioskDisplay.ViewModels
             }
 
             _autoScrollTimer = new DispatcherTimer(
-                TimeSpan.FromSeconds(LocalConfiguration.Settings.AutoScrollInterval),
+                TimeSpan.FromSeconds(Properties.Settings.Default.AutoContentScrollIntervalSeconds),
                 DispatcherPriority.Render,
-                AutoScrollTimerElapsed,
+                TimerElapsed,
                 Application.Current.Dispatcher);
-
-            _videoTransitionTimer = new DispatcherTimer(
-                TimeSpan.FromSeconds(LocalConfiguration.Settings.VideoTransitionDelay),
-                DispatcherPriority.Normal,
-                VideoTransitionTimerElapsed,
-                Application.Current.Dispatcher);
-
-            _videoTransitionTimer.IsEnabled = false;
-
         }
 
         protected override System.Windows.ResourceDictionary LoadContent()
         {
-            return GetResourceDictionaryFromFolder("./Resources/Dormant");
+            var resources = GetResourceDictionaryFromFolder("./Resources/Dormant");
+            try
+            {
+                foreach (var resource in resources.Values)
+                {
+                    if (resource is MediaElement)
+                    {
+                        var mediaElement = (MediaElement)resource;
+                        if (mediaElement.Source.IsVideo())
+                        {
+                            mediaElement.Volume = Properties.Settings.Default.InactiveVolume;
+                            mediaElement.MediaEnded += mediaElement_MediaEnded;
+                        }
+                    }
+                }
+            }
+            catch { }
+            return resources;
         }
 
         protected override void OnUserActive()
         {
-            _autoScrollTimer.Stop();
+            _autoScrollTimer.IsEnabled = false;
         }
 
         protected override void OnUserIdle()
         {
-            _autoScrollTimer.Start();
+            _autoScrollTimer.IsEnabled = true;
         }
 
         protected override void OnCurrentItemChanged(object oldItem, object newItem)
@@ -74,20 +81,15 @@ namespace KioskDisplay.ViewModels
             }
         }
 
-        protected override void MediaEnded(object sender, RoutedEventArgs e)
+        void mediaElement_MediaEnded(object sender, RoutedEventArgs e)
         {
-            base.MediaEnded(sender, e);
-
-            _videoTransitionTimer.Start();
+            if (sender is MediaElement)
+            {
+                NextItemCommand.Execute(null);
+            }
         }
 
-        void VideoTransitionTimerElapsed(object sender, EventArgs e)
-        {
-            _videoTransitionTimer.Stop();
-            NextItemCommand.Execute(null);
-        }
-
-        void AutoScrollTimerElapsed(object sender, EventArgs e)
+        void TimerElapsed(object sender, EventArgs e)
         {
             if (CurrentItem is MediaElement)
             {
@@ -115,8 +117,7 @@ namespace KioskDisplay.ViewModels
 
         private void UnloadCommandExecute(object p)
         {
-            _autoScrollTimer.Stop();
-            _videoTransitionTimer.Stop();
+            _autoScrollTimer.IsEnabled = false;
         }
     }
 }

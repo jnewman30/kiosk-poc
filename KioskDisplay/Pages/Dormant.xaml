@@ -19,7 +19,7 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
     
-    <Border Padding="8">
+    <Border>
         <ContentPresenter Content="{Binding CurrentItem}" />
     </Border>
 </p:TouchPage>

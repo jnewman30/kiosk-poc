@@ -8,7 +8,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" d:DesignHeight="480" d:DesignWidth="640"
       Title="Videos">
-
+   
     <Page.Resources>
         <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
             <Setter Property="Margin" Value="4,2" />
@@ -21,7 +21,7 @@
         <vm:VideosViewModel />
     </Page.DataContext>
 
-
+    
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="TouchSwipeLeft">
             <i:InvokeCommandAction Command="{Binding NextItemCommand}" />
@@ -31,37 +31,34 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
-    <Border Padding="8">
-        <DockPanel LastChildFill="True">
-            <Border DockPanel.Dock="Top">
-                <Label Style="{StaticResource PageTitle}">
-                    <TextBlock Text="Videos" />
-                </Label>
-            </Border>
-            <Border DockPanel.Dock="Bottom">
-                <StackPanel Orientation="Horizontal" 
+    
+    <DockPanel LastChildFill="True">
+        <Border DockPanel.Dock="Top">
+            <TextBlock Text="Videos" Style="{StaticResource PageTitle}" />
+        </Border>
+        <Border DockPanel.Dock="Bottom">
+            <StackPanel Orientation="Horizontal" 
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
-                    <Button Command="{Binding Path=PreviousItemCommand}">
-                        <TextBlock Style="{StaticResource GlyphText}">&#xE112;</TextBlock>
-                    </Button>
-                    <Button Command="{Binding Path=PlayVideoCommand}"
+                <Button Command="{Binding Path=PreviousItemCommand}">
+                    <TextBlock Style="{StaticResource GlyphText}">&#xE112;</TextBlock>
+                </Button>
+                <Button Command="{Binding Path=PlayVideoCommand}"
                         CommandParameter="{Binding ElementName=videoContent, Path=Content}">
-                        <TextBlock Style="{StaticResource GlyphText}">&#xE102;</TextBlock>
-                    </Button>
-                    <Button Command="{Binding Path=StopVideoCommand}"
+                    <TextBlock Style="{StaticResource GlyphText}">&#xE102;</TextBlock>
+                </Button>
+                <Button Command="{Binding Path=StopVideoCommand}"
                         CommandParameter="{Binding ElementName=videoContent, Path=Content}">
-                        <TextBlock Style="{StaticResource GlyphText}">&#xE15B;</TextBlock>
-                    </Button>
-                    <Button Command="{Binding Path=NextItemCommand}">
-                        <TextBlock Style="{StaticResource GlyphText}">&#xE111;</TextBlock>
-                    </Button>
-                </StackPanel>
-            </Border>
+                    <TextBlock Style="{StaticResource GlyphText}">&#xE15B;</TextBlock>
+                </Button>
+                <Button Command="{Binding Path=NextItemCommand}">
+                    <TextBlock Style="{StaticResource GlyphText}">&#xE111;</TextBlock>
+                </Button>
+            </StackPanel>
+        </Border>
 
-            <Border>
-                <ContentPresenter x:Name="videoContent" Content="{Binding CurrentItem}" />
-            </Border>
-        </DockPanel>
-    </Border>
+        <Border>
+            <ContentPresenter x:Name="videoContent" Content="{Binding CurrentItem}" />
+        </Border>
+    </DockPanel>
 </p:TouchPage>

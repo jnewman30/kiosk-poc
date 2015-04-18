@@ -14,20 +14,14 @@
         </Style>
     </Page.Resources>
 
-    <Border Padding="8">
-
-        <DockPanel LastChildFill="True">
-            <Border DockPanel.Dock="Top">
-                <Label Style="{StaticResource PageTitle}">
-                    <TextBlock Text="Awards" />
-                </Label>
-            </Border>
-            <Border>
-                <WrapPanel HorizontalAlignment="Center"
+    <DockPanel LastChildFill="True">
+        <Border DockPanel.Dock="Top">
+            <TextBlock Text="Awards" Style="{StaticResource PageTitle}" />
+        </Border>
+        <Border>
+            <WrapPanel HorizontalAlignment="Center"
                        VerticalAlignment="Center">
-                </WrapPanel>
-            </Border>
-        </DockPanel>
-
-    </Border>
+            </WrapPanel>
+        </Border>
+    </DockPanel>
 </Page>
