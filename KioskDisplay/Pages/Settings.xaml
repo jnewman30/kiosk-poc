@@ -19,133 +19,147 @@
                     <TextBlock Text="Settings" />
                 </Label>
             </Border>
-            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal"
+            <Border DockPanel.Dock="Top"
+                    Visibility="{Binding LoginVisible}">
+                <StackPanel>
+                    <Label>
+                        <TextBlock Text="Code" />
+                    </Label>
+                    <TextBox Text="{Binding SettingsCode}" />
+                    <Button Command="{Binding LoginCommand}">
+                        <TextBlock Text="Login" />
+                    </Button>
+                </StackPanel>
+            </Border>
+            <DockPanel Visibility="{Binding SettingsVisible}">
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal"
                         HorizontalAlignment="Center">
-                <Button DockPanel.Dock="Right" Margin="4"
+                    <Button DockPanel.Dock="Right" Margin="4"
                         Command="{Binding CloseCommand}">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Style="{StaticResource GlyphText}"
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource GlyphText}"
                                VerticalAlignment="Center">&#xe21c;</TextBlock>
-                        <TextBlock Text="Exit to Windows" VerticalAlignment="Center" />
-                    </StackPanel>
-                </Button>
-                <Button DockPanel.Dock="Right" Margin="4"
+                            <TextBlock Text="Exit to Windows" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                    <Button DockPanel.Dock="Right" Margin="4"
                         Command="{Binding SaveSettingsCommand}">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Style="{StaticResource GlyphText}"
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource GlyphText}"
                                VerticalAlignment="Center">&#xe105;</TextBlock>
-                        <TextBlock Text="Save Settings" VerticalAlignment="Center" />
-                    </StackPanel>
-                </Button>
-            </StackPanel>
-            <WrapPanel>
+                            <TextBlock Text="Save Settings" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <WrapPanel>
 
-                <Border Margin="8">
-                    <DockPanel>
-                        <Border DockPanel.Dock="Top">
-                            <Label>
-                                <TextBlock Text="General Settings" FontWeight="Bold" />
-                            </Label>
-                        </Border>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Row="0" Grid.Column="0">
-                                <TextBlock Text="Settings Code" />
-                            </Label>
-                            <TextBox Grid.Row="0" Grid.Column="1" MinWidth="100" 
+                    <Border Margin="8">
+                        <DockPanel>
+                            <Border DockPanel.Dock="Top">
+                                <Label>
+                                    <TextBlock Text="General Settings" FontWeight="Bold" />
+                                </Label>
+                            </Border>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0">
+                                    <TextBlock Text="Settings Code" />
+                                </Label>
+                                <TextBox Grid.Row="0" Grid.Column="1" MinWidth="100" 
                                      HorizontalAlignment="Stretch" 
-                                     Text="{Binding SettingsCode}" />
-                            <CheckBox Grid.Row="1" Grid.ColumnSpan="2"
-                                      IsChecked="{Binding ReplaceWindowsShell}">
-                                <TextBlock Text="Replace Windows Shell" />
-                            </CheckBox>
+                                     Text="{Binding Settings.SettingsCode}" />
+                                <CheckBox Grid.Row="1" Grid.ColumnSpan="2"
+                                      IsChecked="{Binding Settings.ReplaceWindowsShell}">
+                                    <TextBlock Text="Replace Windows Shell" />
+                                </CheckBox>
 
-                        </Grid>
-                    </DockPanel>
-                </Border>
+                            </Grid>
+                        </DockPanel>
+                    </Border>
 
-                <Border Margin="8">
-                    <DockPanel>
-                        <Border DockPanel.Dock="Top">
-                            <Label>
-                                <TextBlock Text="Timer Settings" FontWeight="Bold" />
-                            </Label>
-                        </Border>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
+                    <Border Margin="8">
+                        <DockPanel>
+                            <Border DockPanel.Dock="Top">
+                                <Label>
+                                    <TextBlock Text="Timer Settings" FontWeight="Bold" />
+                                </Label>
+                            </Border>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
 
-                            <Label Grid.Row="0" Grid.Column="0">
-                                <TextBlock Text="Inactivity Interval (min)" />
-                            </Label>
-                            <xtk:DoubleUpDown Grid.Row="0" Grid.Column="1"
+                                <Label Grid.Row="0" Grid.Column="0">
+                                    <TextBlock Text="Inactivity Interval (min)" />
+                                </Label>
+                                <xtk:DoubleUpDown Grid.Row="0" Grid.Column="1"
                                               FormatString="F2" Minimum="1" 
                                               Maximum="20" Increment="0.5" 
-                                              Value="{Binding InactivityInterval}" />
+                                              Value="{Binding Settings.InactivityTimerInterval}" />
 
-                            <Label Grid.Row="1" Grid.Column="0">
-                                <TextBlock Text="Auto Scroll Interval (sec)" />
-                            </Label>
-                            <xtk:DoubleUpDown Grid.Row="1" Grid.Column="1"
+                                <Label Grid.Row="1" Grid.Column="0">
+                                    <TextBlock Text="Auto Scroll Interval (sec)" />
+                                </Label>
+                                <xtk:DoubleUpDown Grid.Row="1" Grid.Column="1"
                                               FormatString="F2" Minimum="1" 
                                               Maximum="20" Increment="0.5" 
-                                              Value="{Binding AutoScrollInterval}"/>
+                                              Value="{Binding Settings.AutoScrollInterval}"/>
 
-                        </Grid>
-                    </DockPanel>
-                </Border>
+                            </Grid>
+                        </DockPanel>
+                    </Border>
 
-                <Border Margin="8">
-                    <DockPanel>
-                        <Border DockPanel.Dock="Top">
-                            <Label>
-                                <TextBlock Text="Volume Settings" FontWeight="Bold" />
-                            </Label>
-                        </Border>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
+                    <Border Margin="8">
+                        <DockPanel>
+                            <Border DockPanel.Dock="Top">
+                                <Label>
+                                    <TextBlock Text="Volume Settings" FontWeight="Bold" />
+                                </Label>
+                            </Border>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
 
-                            <Label Grid.Row="0" Grid.Column="0">
-                                <TextBlock Text="Inavtive Volume (%)" />
-                            </Label>
-                            <xtk:DoubleUpDown Grid.Row="0" Grid.Column="1"
+                                <Label Grid.Row="0" Grid.Column="0">
+                                    <TextBlock Text="Inavtive Volume (%)" />
+                                </Label>
+                                <xtk:DoubleUpDown Grid.Row="0" Grid.Column="1"
                                               FormatString="N2" Minimum="0" 
                                               Maximum="1" Increment="0.1" 
-                                              Value="{Binding InactiveVolume}" />
+                                              Value="{Binding Settings.InactiveVolume}" />
 
-                            <Label Grid.Row="1" Grid.Column="0">
-                                <TextBlock Text="Active Volume (%)" />
-                            </Label>
-                            <xtk:DoubleUpDown Grid.Row="1" Grid.Column="1"
+                                <Label Grid.Row="1" Grid.Column="0">
+                                    <TextBlock Text="Active Volume (%)" />
+                                </Label>
+                                <xtk:DoubleUpDown Grid.Row="1" Grid.Column="1"
                                               FormatString="N2" Minimum="0" 
                                               Maximum="1" Increment="0.1" 
-                                              Value="{Binding ActiveVolume}" />
+                                              Value="{Binding Settings.ActiveVolume}" />
 
-                        </Grid>
-                    </DockPanel>
-                </Border>
+                            </Grid>
+                        </DockPanel>
+                    </Border>
 
-            </WrapPanel>
+                </WrapPanel>
+            </DockPanel>
         </DockPanel>
     </Border>
 </Page>

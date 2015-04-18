@@ -24,13 +24,13 @@ namespace KioskDisplay.ViewModels
             }
 
             _autoScrollTimer = new DispatcherTimer(
-                TimeSpan.FromSeconds(Properties.Settings.Default.AutoContentScrollIntervalSeconds),
+                TimeSpan.FromSeconds(LocalConfiguration.Settings.AutoScrollInterval),
                 DispatcherPriority.Render,
                 AutoScrollTimerElapsed,
                 Application.Current.Dispatcher);
 
             _videoTransitionTimer = new DispatcherTimer(
-                TimeSpan.FromSeconds(3),
+                TimeSpan.FromSeconds(LocalConfiguration.Settings.VideoTransitionDelay),
                 DispatcherPriority.Normal,
                 VideoTransitionTimerElapsed,
                 Application.Current.Dispatcher);
