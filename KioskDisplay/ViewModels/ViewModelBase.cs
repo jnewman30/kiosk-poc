@@ -49,6 +49,28 @@ namespace KioskDisplay.ViewModels
             }
         }
 
+        protected virtual void StartInactivityTimer()
+        {
+            var application = (KioskDisplay.App)Application.Current;
+            application.StartInactivityTimer();
+        }
+
+        protected virtual void StopInactivityTimer()
+        {
+            var application = (KioskDisplay.App)Application.Current;
+            application.StopInactivityTimer();
+        }
+
+        protected virtual void MediaOpened(object sender, RoutedEventArgs e)
+        {
+            StopInactivityTimer();
+        }
+
+        protected virtual void MediaEnded(object sender, RoutedEventArgs e)
+        {
+            StartInactivityTimer();
+        }
+
         protected ResourceDictionary GetResourceDictionary(string name)
         {
             try
@@ -91,6 +113,13 @@ namespace KioskDisplay.ViewModels
                             ? MediaState.Manual 
                             : MediaState.Play
                     };
+
+                    if(mediaUri.IsVideo())
+                    {
+                        content.MediaOpened += MediaOpened;
+                        content.MediaEnded += MediaEnded;
+                        content.MediaFailed += MediaEnded;
+                    }
 
                     resources.Add(key, content);
                     count++;
