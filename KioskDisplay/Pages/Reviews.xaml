@@ -8,6 +8,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" d:DesignHeight="480" d:DesignWidth="640"
              Title="Reviews">
+
+    <Page.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+            <Setter Property="Margin" Value="4,2" />
+            <Setter Property="Padding" Value="4" />
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+    </Page.Resources>    
     
     <Page.DataContext>
         <vm:ReviewsViewModel />
@@ -22,24 +30,28 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
-    <DockPanel LastChildFill="True">
-        <Border DockPanel.Dock="Top">
-            <TextBlock Text="Reviews" Style="{StaticResource PageTitle}" />
-        </Border>
-        <Border DockPanel.Dock="Bottom">
-            <StackPanel Orientation="Horizontal" 
+    <Border Padding="8">
+        <DockPanel LastChildFill="True">
+            <Border DockPanel.Dock="Top">
+                <Label Style="{StaticResource PageTitle}">
+                    <TextBlock Text="Reviews" />
+                </Label>
+            </Border>
+            <Border DockPanel.Dock="Bottom">
+                <StackPanel Orientation="Horizontal" 
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
-                <Button Command="{Binding Path=PreviousItemCommand}">
-                    <TextBlock Style="{StaticResource GlyphText}">&#xE112;</TextBlock>
-                </Button>
-                <Button Command="{Binding Path=NextItemCommand}">
-                    <TextBlock Style="{StaticResource GlyphText}">&#xE111;</TextBlock>
-                </Button>
-            </StackPanel>
-        </Border>
-        <Border>
-            <ContentPresenter Content="{Binding CurrentItem}" />
-        </Border>
-    </DockPanel>
+                    <Button Command="{Binding Path=PreviousItemCommand}">
+                        <TextBlock Style="{StaticResource GlyphText}">&#xE112;</TextBlock>
+                    </Button>
+                    <Button Command="{Binding Path=NextItemCommand}">
+                        <TextBlock Style="{StaticResource GlyphText}">&#xE111;</TextBlock>
+                    </Button>
+                </StackPanel>
+            </Border>
+            <Border>
+                <ContentPresenter Content="{Binding CurrentItem}" />
+            </Border>
+        </DockPanel>
+    </Border>
 </p:TouchPage>

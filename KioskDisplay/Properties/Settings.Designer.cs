@@ -23,30 +23,39 @@ namespace KioskDisplay.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public double InactivityTimerIntervalMinutes {
             get {
                 return ((double)(this["InactivityTimerIntervalMinutes"]));
             }
+            set {
+                this["InactivityTimerIntervalMinutes"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("5")]
         public double AutoContentScrollIntervalSeconds {
             get {
                 return ((double)(this["AutoContentScrollIntervalSeconds"]));
             }
+            set {
+                this["AutoContentScrollIntervalSeconds"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0.25")]
         public double InactiveVolume {
             get {
                 return ((double)(this["InactiveVolume"]));
+            }
+            set {
+                this["InactiveVolume"] = value;
             }
         }
         
@@ -59,6 +68,30 @@ namespace KioskDisplay.Properties {
             }
             set {
                 this["ActiveVolume"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1234")]
+        public string SettingsCode {
+            get {
+                return ((string)(this["SettingsCode"]));
+            }
+            set {
+                this["SettingsCode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ReplaceWindowsShell {
+            get {
+                return ((bool)(this["ReplaceWindowsShell"]));
+            }
+            set {
+                this["ReplaceWindowsShell"] = value;
             }
         }
     }
