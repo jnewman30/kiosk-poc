@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Linq;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
+using Microsoft.Win32;
 
 namespace KioskDisplay
 {

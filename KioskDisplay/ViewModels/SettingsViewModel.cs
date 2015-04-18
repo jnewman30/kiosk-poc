@@ -2,6 +2,10 @@
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
+using System.Linq;
+using System.Diagnostics;
+using Microsoft.Win32;
+using System.Reflection;
 
 namespace KioskDisplay.ViewModels
 {
@@ -119,8 +123,7 @@ namespace KioskDisplay.ViewModels
 
         private void ExecuteClose(object parameter)
         {
-            App.Current.MainWindow.Close();
-            //TODO: Start Windows Shell
+            App.Current.Shutdown();
         }
 
         private bool CanExecuteClose(object parameter)
