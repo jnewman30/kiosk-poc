@@ -92,20 +92,20 @@
 						<Label Content="First Name:" Grid.Row="2" Grid.Column="1" Style="{StaticResource QuoteLabel}"/>
 						<TextBox Text="{Binding FirstName}" Grid.Row="2" Grid.Column="2" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
 						<Label Content="Last Name:" Grid.Row="4" Grid.Column="1" Style="{StaticResource QuoteLabel}"/>
-						<TextBox Text="{Binding LastName}" Grid.Row="4" Grid.Column="2" Style="{StaticResource QuoteTextBox}"/>
+                        <TextBox Text="{Binding LastName}" Grid.Row="4" Grid.Column="2" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
 						<Label Content="Email:" Grid.Row="6" Grid.Column="1" Style="{StaticResource QuoteLabel}" />
-						<TextBox Text="{Binding Email}" Grid.Row="6" Grid.Column="2" Style="{StaticResource QuoteTextBox}"/>
+                        <TextBox Text="{Binding Email}" Grid.Row="6" Grid.Column="2" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
 						<Label Content="Phone:" Grid.Row="8" Grid.Column="1" Style="{StaticResource QuoteLabel}" />
-						<TextBox Text="{Binding PhoneNumber}" Grid.Row="8" Grid.Column="2" Style="{StaticResource QuoteTextBox}"/>
+                        <TextBox Text="{Binding PhoneNumber}" Grid.Row="8" Grid.Column="2" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
 						
 						<Label Content="Address:" Grid.Row="2" Grid.Column="4" Style="{StaticResource QuoteLabel}" />
-						<TextBox Text="{Binding Address}" Grid.Row="2" Grid.Column="5" Style="{StaticResource QuoteTextBox}"/>
+                        <TextBox Text="{Binding Address}" Grid.Row="2" Grid.Column="5" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
 						<Label Content="City:" Grid.Row="4" Grid.Column="4" Style="{StaticResource QuoteLabel}" />
-						<TextBox Text="{Binding City}" Grid.Row="4" Grid.Column="5" Style="{StaticResource QuoteTextBox}"/>
+                        <TextBox Text="{Binding City}" Grid.Row="4" Grid.Column="5" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
 						<Label Content="State:" Grid.Row="6" Grid.Column="4" Style="{StaticResource QuoteLabel}" />
-						<TextBox Text="{Binding State}" Grid.Row="6" Grid.Column="5" Style="{StaticResource QuoteTextBox}"/>
+                        <TextBox Text="{Binding State}" Grid.Row="6" Grid.Column="5" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
 						<Label Content="Zip Code:" Grid.Row="8" Grid.Column="4" Style="{StaticResource QuoteLabel}" />
-						<TextBox Text="{Binding ZipCode}" Grid.Row="8" Grid.Column="5" Style="{StaticResource QuoteTextBox}"/>
+                        <TextBox Text="{Binding ZipCode}" Grid.Row="8" Grid.Column="5" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
 						
 						<Button Name="SubmitButton" Content="Submit" Grid.Row="10" Grid.Column="5" Style="{StaticResource QuoteButton}" />
 					</Grid>

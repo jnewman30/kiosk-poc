@@ -761,19 +761,10 @@ namespace KioskDisplay.Controls
 
 			if (_InstanceObject == null)
 			{
-				FrameworkElement ct = host;
-				while (true)
-				{
-					var window = ct as Window;
-					if (window != null)
-					{
-						window.LocationChanged += TouchScreenKeyboard_LocationChanged;
-						window.Activated += TouchScreenKeyboard_Activated;
-						window.Deactivated += TouchScreenKeyboard_Deactivated;
-						break;
-					}
-					ct = (FrameworkElement)ct.Parent;
-				}
+                var window = App.Current.MainWindow;
+                window.LocationChanged += TouchScreenKeyboard_LocationChanged;
+                window.Activated += TouchScreenKeyboard_Activated;
+                window.Deactivated += TouchScreenKeyboard_Deactivated;
 
 				_InstanceObject = new TouchScreenKeyboard();
 				_InstanceObject.AllowsTransparency = true;
@@ -786,8 +777,17 @@ namespace KioskDisplay.Controls
 			}
 		}
 
+        static void RestartInactivityTimer()
+        {
+            var application = (KioskDisplay.App)Application.Current;
+            application.StopInactivityTimer();
+            application.StartInactivityTimer();
+        }
+
 		static void TouchScreenKeyboard_Deactivated(object sender, EventArgs e)
 		{
+            RestartInactivityTimer();
+
 			if (_InstanceObject != null)
 			{
 				_InstanceObject.Topmost = false;
@@ -796,6 +796,8 @@ namespace KioskDisplay.Controls
 
 		static void TouchScreenKeyboard_Activated(object sender, EventArgs e)
 		{
+            RestartInactivityTimer();
+
 			if (_InstanceObject != null)
 			{
 				_InstanceObject.Topmost = true;
@@ -804,16 +806,21 @@ namespace KioskDisplay.Controls
 
 		static void TouchScreenKeyboard_LocationChanged(object sender, EventArgs e)
 		{
+            RestartInactivityTimer();
+
 			syncchild();
 		}
 
 		static void tb_LayoutUpdated(object sender, EventArgs e)
 		{
+            RestartInactivityTimer();
+
 			syncchild();
 		}
 
 		static void OnLostFocus(object sender, RoutedEventArgs e)
 		{
+            RestartInactivityTimer();
 
 			var host = sender as Control;
 			host.Background = _PreviousTextBoxBackgroundBrush;
