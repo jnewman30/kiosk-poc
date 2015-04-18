@@ -99,6 +99,9 @@ namespace KioskDisplay.ViewModels
         {
             base.MediaEnded(sender, e);
 
+            StopInactivityTimer();
+            StartInactivityTimer();
+
             NextItemCommand.Execute(null);
         }
     }

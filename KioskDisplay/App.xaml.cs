@@ -88,11 +88,19 @@ namespace KioskDisplay
 
         public void StartInactivityTimer()
         {
+            if(_inavtivityTimer == null)
+            {
+                return;
+            }
             _inavtivityTimer.Start();
         }
 
         public void StopInactivityTimer()
         {
+            if(_inavtivityTimer == null)
+            {
+                return;
+            }
             _inavtivityTimer.Stop();
         }
     }
