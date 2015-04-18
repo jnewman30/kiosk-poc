@@ -1,11 +1,35 @@
-﻿<Page x:Class="KioskDisplay.Pages.PriceQuote"
+﻿<p:TouchPage x:Class="KioskDisplay.Pages.PriceQuote"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:p="clr-namespace:KioskDisplay.Pages"
+      xmlns:vm="clr-namespace:KioskDisplay.ViewModels"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:controls="clr-namespace:KioskDisplay.Controls"
       mc:Ignorable="d" d:DesignHeight="480" d:DesignWidth="640"
       Title="Price Quote">
+
+    <Page.DataContext>
+        <vm:QuotePageViewModel />
+    </Page.DataContext>
+
     <DockPanel LastChildFill="True">
-        <Frame Source="https://docs.google.com/forms/d/1s_VAuVSMxNUMkGvOQKsXQREwpridEL6C3oU1-gW8LTw/viewform" />
+        <!--<Border DockPanel.Dock="Bottom">
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <Button Command="{Binding Path=PreviousItemCommand}">
+                    <TextBlock Style="{StaticResource GlyphText}">&#xE112;</TextBlock>
+                </Button>
+                <Button Command="{Binding Path=NextItemCommand}">
+                    <TextBlock Style="{StaticResource GlyphText}">&#xE111;</TextBlock>
+                </Button>
+            </StackPanel>
+        </Border>-->
+        <ContentPresenter Content="{Binding CurrentItem}">
+            <ContentPresenter.ContentTemplateSelector>
+                <controls:QuotePageDataTemplateSelector QuoteWizardPageDataTemplate="{StaticResource QuoteWizardPageTemplate}" />
+            </ContentPresenter.ContentTemplateSelector>
+        </ContentPresenter>
     </DockPanel>
-</Page>
+</p:TouchPage>
