@@ -24,8 +24,8 @@ namespace KioskDisplay.ViewModels
             application.UserActive += application_UserActive;
             application.UserIdle += application_UserIdle;
 
-            application.StopInactivityTimer();
-            application.StartInactivityTimer();
+            StopInactivityTimer();
+            StartInactivityTimer();
         }
 
         void application_UserIdle(object sender, EventArgs e)
