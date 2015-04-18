@@ -23,6 +23,9 @@ namespace KioskDisplay.ViewModels
             var application = (KioskDisplay.App)Application.Current;
             application.UserActive += application_UserActive;
             application.UserIdle += application_UserIdle;
+
+            StopInactivityTimer();
+            StartInactivityTimer();
         }
 
         void application_UserIdle(object sender, EventArgs e)
@@ -47,6 +50,28 @@ namespace KioskDisplay.ViewModels
                 var e = new PropertyChangedEventArgs(propertyName);
                 handler(this, e);
             }
+        }
+
+        protected virtual void StartInactivityTimer()
+        {
+            var application = (KioskDisplay.App)Application.Current;
+            application.StartInactivityTimer();
+        }
+
+        protected virtual void StopInactivityTimer()
+        {
+            var application = (KioskDisplay.App)Application.Current;
+            application.StopInactivityTimer();
+        }
+
+        protected virtual void MediaOpened(object sender, RoutedEventArgs e)
+        {
+            StopInactivityTimer();
+        }
+
+        protected virtual void MediaEnded(object sender, RoutedEventArgs e)
+        {
+            StartInactivityTimer();
         }
 
         protected ResourceDictionary GetResourceDictionary(string name)
@@ -91,6 +116,13 @@ namespace KioskDisplay.ViewModels
                             ? MediaState.Manual 
                             : MediaState.Play
                     };
+
+                    if(mediaUri.IsVideo())
+                    {
+                        content.MediaOpened += MediaOpened;
+                        content.MediaEnded += MediaEnded;
+                        content.MediaFailed += MediaEnded;
+                    }
 
                     resources.Add(key, content);
                     count++;

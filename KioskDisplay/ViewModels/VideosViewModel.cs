@@ -89,5 +89,20 @@ namespace KioskDisplay.ViewModels
                 }
             }
         }
+
+        protected override void MediaOpened(object sender, System.Windows.RoutedEventArgs e)
+        {
+            base.MediaOpened(sender, e);
+        }
+
+        protected override void MediaEnded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            base.MediaEnded(sender, e);
+
+            StopInactivityTimer();
+            StartInactivityTimer();
+
+            NextItemCommand.Execute(null);
+        }
     }
 }
