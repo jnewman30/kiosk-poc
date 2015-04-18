@@ -33,21 +33,19 @@ namespace KioskDisplay.ViewModels
             }
 
             var resources = LoadContent();
-            if(resources == null)
+            if (resources != null)
             {
-                return;
-            }
+                App.Current.Resources.MergedDictionaries.Add(resources);
 
-            App.Current.Resources.MergedDictionaries.Add(resources);
-
-            foreach (var key in resources.Keys)
-            {
-                if (!key.ToString().StartsWith("Content"))
+                foreach (var key in resources.Keys)
                 {
-                    continue;
+                    if (!key.ToString().StartsWith("Content"))
+                    {
+                        continue;
+                    }
+                    var resource = resources[key];
+                    Content.Add(resource);
                 }
-                var resource = resources[key];
-                Content.Add(resource);
             }
 
             if (Content.Count == 0)

@@ -28,7 +28,8 @@
         </Border>-->
         <ContentPresenter Content="{Binding CurrentItem}">
             <ContentPresenter.ContentTemplateSelector>
-                <controls:QuotePageDataTemplateSelector QuoteWizardPageDataTemplate="{StaticResource QuoteWizardPageTemplate}" />
+                <controls:QuotePageDataTemplateSelector 
+                    QuoteWizardPageDataTemplate="{StaticResource QuoteWizardPageTemplate}" />
             </ContentPresenter.ContentTemplateSelector>
         </ContentPresenter>
     </DockPanel>
