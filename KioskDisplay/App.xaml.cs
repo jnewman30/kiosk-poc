@@ -23,6 +23,9 @@ namespace KioskDisplay
 
         public App()
         {
+            KioskDisplay.Properties.Settings.Default.Reload();
+            KioskDisplay.Properties.Settings.Default.Upgrade();
+
             LoadCompleted += App_LoadCompleted;
         }
 

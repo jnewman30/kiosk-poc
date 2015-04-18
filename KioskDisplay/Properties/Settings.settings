@@ -2,17 +2,23 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="KioskDisplay.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="InactivityTimerIntervalMinutes" Type="System.Double" Scope="Application">
+    <Setting Name="InactivityTimerIntervalMinutes" Type="System.Double" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="AutoContentScrollIntervalSeconds" Type="System.Double" Scope="Application">
+    <Setting Name="AutoContentScrollIntervalSeconds" Type="System.Double" Scope="User">
       <Value Profile="(Default)">5</Value>
     </Setting>
-    <Setting Name="InactiveVolume" Type="System.Double" Scope="Application">
+    <Setting Name="InactiveVolume" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0.25</Value>
     </Setting>
     <Setting Name="ActiveVolume" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0.5</Value>
+    </Setting>
+    <Setting Name="SettingsCode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1234</Value>
+    </Setting>
+    <Setting Name="ReplaceWindowsShell" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

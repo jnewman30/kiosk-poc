@@ -12,18 +12,23 @@
             </ResourceDictionary.MergedDictionaries>
 
             <Style x:Key="GlyphText" TargetType="TextBlock">
-                <Setter Property="Padding" Value="8" />
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="FontFamily" Value="Segoe UI Symbol" />
             </Style>
             
-            <Style x:Key="PageTitle" TargetType="TextBlock">
-                <Setter Property="FontFamily" Value="Segoe UI" />
-                <Setter Property="FontSize" Value="18" />
-                <Setter Property="FontWeight" Value="Bold" />
-                <Setter Property="HorizontalAlignment" Value="Center" />
+            <Style x:Key="PageTitle" TargetType="Label">
                 <Setter Property="VerticalAlignment" Value="Center" />
-                <Setter Property="Foreground" Value="{StaticResource LightForegroundBrush}" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Style.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                        <Setter Property="FontFamily" Value="Segoe UI" />
+                        <Setter Property="FontSize" Value="18" />
+                        <Setter Property="FontWeight" Value="Bold" />
+                        <Setter Property="Foreground" Value="{StaticResource LightForegroundBrush}" />
+                    </Style>
+                </Style.Resources>
             </Style>
         </ResourceDictionary>
         
