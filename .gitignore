@@ -1,3 +1,9 @@
 KioskDisplay/bin/*
 KioskDisplay/obj/*
 *.suo
+*.nupkg
+*.user
+packages/Extended.Wpf.Toolkit.2.4/lib/net35/WPFToolkit.dll
+*.dll
+packages/Extended.Wpf.Toolkit.2.4/tools/install.ps1
+packages/Westwind.Utilities.Configuration.2.25/lib/net40/Westwind.Utilities.Configuration.XML
