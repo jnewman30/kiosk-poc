@@ -23,7 +23,7 @@ namespace KioskDisplay.ViewModels
         protected List<object> Content;
         protected int CurrentIndex;
 
-        public ScrollerViewModel()
+        public ScrollerViewModel() : base()
         {
             Content = new List<object>();
 

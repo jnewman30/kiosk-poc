@@ -7,9 +7,17 @@ namespace KioskDisplay.ViewModels
 {
     public class SettingsViewModel : PageViewModelBase
     {
+        public static DependencyProperty SettingsProperty = DependencyProperty.Register(
+            "Settings", typeof(LocalConfiguration), typeof(SettingsViewModel));
+
+        public LocalConfiguration Settings
+        {
+            get { return (LocalConfiguration)GetValue(SettingsProperty); }
+            set { SetValue(SettingsProperty, value); }
+        }
+
         public static DependencyProperty SettingsCodeProperty = DependencyProperty.Register(
-            "SettingsCode", typeof(string), typeof(SettingsViewModel),
-            new PropertyMetadata(KioskDisplay.Properties.Settings.Default.SettingsCode));
+            "SettingsCode", typeof(string), typeof(SettingsViewModel));
 
         public string SettingsCode
         {
@@ -17,54 +25,22 @@ namespace KioskDisplay.ViewModels
             set { SetValue(SettingsCodeProperty, value); }
         }
 
-        public static DependencyProperty InactivityIntervalProperty = DependencyProperty.Register(
-            "InactivityInterval", typeof(double), typeof(SettingsViewModel),
-            new PropertyMetadata(KioskDisplay.Properties.Settings.Default.InactivityTimerIntervalMinutes));
+        public static DependencyProperty LoginVisibleProperty = DependencyProperty.Register(
+            "LoginVisible", typeof(Visibility), typeof(SettingsViewModel));
 
-        public double InactivityInterval
+        public Visibility LoginVisible
         {
-            get { return (double)GetValue(InactivityIntervalProperty); }
-            set { SetValue(InactivityIntervalProperty, value); }
+            get { return (Visibility)GetValue(LoginVisibleProperty); }
+            set { SetValue(LoginVisibleProperty, value); }
         }
 
-        public static DependencyProperty AutoScrollIntervalProperty = DependencyProperty.Register(
-            "AutoScrollInterval", typeof(double), typeof(SettingsViewModel),
-            new PropertyMetadata(KioskDisplay.Properties.Settings.Default.AutoContentScrollIntervalSeconds));
+        public static DependencyProperty SettingsVisibleProperty = DependencyProperty.Register(
+            "SettingsVisible", typeof(Visibility), typeof(SettingsViewModel));
 
-        public double AutoScrollInterval
+        public Visibility SettingsVisible
         {
-            get { return (double)GetValue(AutoScrollIntervalProperty); }
-            set { SetValue(AutoScrollIntervalProperty, value); }
-        }
-
-        public static DependencyProperty ActiveVolumeProperty = DependencyProperty.Register(
-            "ActiveVolume", typeof(double), typeof(SettingsViewModel),
-            new PropertyMetadata(KioskDisplay.Properties.Settings.Default.ActiveVolume));
-
-        public double ActiveVolume
-        {
-            get { return (double)GetValue(ActiveVolumeProperty); }
-            set { SetValue(ActiveVolumeProperty, value); }
-        }
-
-        public static DependencyProperty InactiveVolumeProperty = DependencyProperty.Register(
-            "InactiveVolume", typeof(double), typeof(SettingsViewModel),
-            new PropertyMetadata(KioskDisplay.Properties.Settings.Default.InactiveVolume));
-
-        public double InactiveVolume
-        {
-            get { return (double)GetValue(InactiveVolumeProperty); }
-            set { SetValue(InactiveVolumeProperty, value); }
-        }
-
-        public static DependencyProperty ReplaceWindowsShellProperty = DependencyProperty.Register(
-            "ReplaceWindowsShell", typeof(bool), typeof(SettingsViewModel),
-            new PropertyMetadata(KioskDisplay.Properties.Settings.Default.ReplaceWindowsShell));
-
-        public bool ReplaceWindowsShell
-        {
-            get { return (bool)GetValue(ReplaceWindowsShellProperty); }
-            set { SetValue(ReplaceWindowsShellProperty, value); }
+            get { return (Visibility)GetValue(SettingsVisibleProperty); }
+            set { SetValue(SettingsVisibleProperty, value); }
         }
 
         public SettingsViewModel()
@@ -73,7 +49,36 @@ namespace KioskDisplay.ViewModels
             {
                 return;
             }
-            Properties.Settings.Default.Upgrade();
+            Settings = LocalConfiguration.Settings;
+            LoginVisible = Visibility.Visible;
+            SettingsVisible = Visibility.Collapsed;
+        }
+
+        RelayCommand _loginCommand;
+        public ICommand LoginCommand
+        {
+            get
+            {
+                if(_loginCommand == null)
+                {
+                    _loginCommand = new RelayCommand(ExecuteLogin, CanExecuteLogin);
+                }
+                return _loginCommand;
+            }
+        }
+
+        private bool CanExecuteLogin(object obj)
+        {
+            return true;
+        }
+
+        private void ExecuteLogin(object obj)
+        {
+            if(SettingsCode == Settings.SettingsCode)
+            {
+                LoginVisible = Visibility.Collapsed;
+                SettingsVisible = Visibility.Visible;
+            }
         }
 
         RelayCommand _saveSettingsCommand;
@@ -96,8 +101,7 @@ namespace KioskDisplay.ViewModels
 
         private void ExecuteSave(object parameter)
         {
-            Properties.Settings.Default.Save();
-            Properties.Settings.Default.Reload();
+            Settings.Write();
         }
 
         RelayCommand _closeCommand;

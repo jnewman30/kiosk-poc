@@ -16,16 +16,8 @@ namespace KioskDisplay
         internal event EventHandler UserIdle = delegate { };
         internal event EventHandler UserActive = delegate { };
 
-        internal KioskDisplay.Properties.Settings Settings
-        {
-            get { return KioskDisplay.Properties.Settings.Default; }
-        }
-
         public App()
         {
-            KioskDisplay.Properties.Settings.Default.Reload();
-            KioskDisplay.Properties.Settings.Default.Upgrade();
-
             LoadCompleted += App_LoadCompleted;
         }
 
@@ -41,8 +33,8 @@ namespace KioskDisplay
             InputManager.Current.PreProcessInput += PreProcessInput;
 
             _inavtivityTimer = new DispatcherTimer(
-                TimeSpan.FromMinutes(Settings.InactivityTimerIntervalMinutes),
-                DispatcherPriority.Send,
+                TimeSpan.FromMinutes(LocalConfiguration.Settings.InactivityTimerInterval),
+                DispatcherPriority.Normal,
                 OnInactivity,
                 Application.Current.Dispatcher);
             _inavtivityTimer.IsEnabled = false;
@@ -62,14 +54,14 @@ namespace KioskDisplay
                 inputEventArgs is TouchEventArgs ||
                 inputEventArgs is StylusEventArgs)
             {
-                if (inputEventArgs is MouseEventArgs)
-                {
-                    var currentMousePosition = Mouse.GetPosition(App.Current.MainWindow);
-                    if (currentMousePosition == _inactiveMousePosition)
-                    {
-                        return;
-                    }
-                }
+                //if (inputEventArgs is MouseEventArgs)
+                //{
+                //    var currentMousePosition = Mouse.GetPosition(App.Current.MainWindow);
+                //    if (currentMousePosition == _inactiveMousePosition)
+                //    {
+                //        return;
+                //    }
+                //}
 
                 // If we have activity restart the timer...
                 _inavtivityTimer.Stop();
