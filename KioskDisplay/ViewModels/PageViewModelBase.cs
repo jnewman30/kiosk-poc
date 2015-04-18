@@ -7,5 +7,8 @@ namespace KioskDisplay.ViewModels
 {
     public class PageViewModelBase : ViewModelBase
     {
+        public PageViewModelBase() : base()
+        {
+        }
     }
 }

@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Linq;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
+using Microsoft.Win32;
 
 namespace KioskDisplay
 {
@@ -11,17 +14,10 @@ namespace KioskDisplay
     public partial class App : Application
     {
         private DispatcherTimer _inavtivityTimer;
-        private bool _mainWindowLoaded = false;
-        private bool _isUserActive = false;
         private Point _inactiveMousePosition = new Point(0, 0);
 
         internal event EventHandler UserIdle = delegate { };
         internal event EventHandler UserActive = delegate { };
-
-        internal KioskDisplay.Properties.Settings Settings
-        {
-            get { return KioskDisplay.Properties.Settings.Default; }
-        }
 
         public App()
         {
@@ -40,8 +36,8 @@ namespace KioskDisplay
             InputManager.Current.PreProcessInput += PreProcessInput;
 
             _inavtivityTimer = new DispatcherTimer(
-                TimeSpan.FromMinutes(Settings.InactivityTimerIntervalMinutes),
-                DispatcherPriority.Send,
+                TimeSpan.FromMinutes(LocalConfiguration.Settings.InactivityTimerInterval),
+                DispatcherPriority.Normal,
                 OnInactivity,
                 Application.Current.Dispatcher);
             _inavtivityTimer.IsEnabled = false;
@@ -49,7 +45,6 @@ namespace KioskDisplay
 
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            _mainWindowLoaded = true;
             _inavtivityTimer.Start();
         }
 
@@ -57,39 +52,33 @@ namespace KioskDisplay
         {
             // Only assume activity on mouse and keyboard events...
             var inputEventArgs = e.StagingItem.Input;
-            if (inputEventArgs is MouseEventArgs || 
-                inputEventArgs is KeyboardEventArgs)
+            if (inputEventArgs is KeyboardEventArgs ||
+                inputEventArgs is MouseEventArgs || 
+                inputEventArgs is TouchEventArgs ||
+                inputEventArgs is StylusEventArgs)
             {
-                if(inputEventArgs is MouseEventArgs)
-                {
-                    var currentMousePosition = Mouse.GetPosition(App.Current.MainWindow);
-                    if (currentMousePosition == _inactiveMousePosition)
-                    {
-                        return;
-                    }
-                }
+                //if (inputEventArgs is MouseEventArgs)
+                //{
+                //    var currentMousePosition = Mouse.GetPosition(App.Current.MainWindow);
+                //    if (currentMousePosition == _inactiveMousePosition)
+                //    {
+                //        return;
+                //    }
+                //}
+
                 // If we have activity restart the timer...
                 _inavtivityTimer.Stop();
                 _inavtivityTimer.Start();
 
-                if (!_isUserActive)
-                {
-                    _isUserActive = true;
-                    // Fire the user active event...
-                    UserActive(this, new EventArgs());
-                }
+                // Fire the user active event...
+                UserActive(this, new EventArgs());
             }
         }
 
         void OnInactivity(object sender, EventArgs e)
         {
-            if (!_isUserActive)
-            {
-                return;
-            }
-            _inactiveMousePosition = Mouse.GetPosition(App.Current.MainWindow);
-            _isUserActive = false;
             _inavtivityTimer.Stop();
+            _inactiveMousePosition = Mouse.GetPosition(App.Current.MainWindow);
 
             // Fire the user idle event...
             UserIdle(this, new EventArgs());
@@ -97,11 +86,19 @@ namespace KioskDisplay
 
         public void StartInactivityTimer()
         {
+            if(_inavtivityTimer == null)
+            {
+                return;
+            }
             _inavtivityTimer.Start();
         }
 
         public void StopInactivityTimer()
         {
+            if(_inavtivityTimer == null)
+            {
+                return;
+            }
             _inavtivityTimer.Stop();
         }
     }
