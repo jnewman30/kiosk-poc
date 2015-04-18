@@ -1,0 +1,38 @@
+[33m5617d63[m Sync attempt
+[33m56d29f1[m Added keyboard and quote form
+[33me1c711f[m Clean Up
+[33m2fdf661[m Cleanup. Add login to settings page.  Add settings controls to settings page.  More fixing of inactivity problems.
+[33mc930b94[m Added Settings to Settings Page.
+[33mbe58342[m Clean Up
+[33mcbd8934[m Added timer reset to the constructor of the ViewModelBase.  Should help with more reliability with resetting inactivity timer.
+[33mf49d2a4[m Added code to the VideoViewModel to automatically move to the next video when the previous one finishes.
+[33mf7a468c[m Fix to help with touch not resetting inactivity timer.
+[33m9e6836c[m Fix for inactivity timer not properly resetting.
+[33m6b7fcf0[m Fixing Inactivity Timer mishaps
+[33m6e3f46f[m Fixed touch not affecting inactivity timer.
+[33m243546e[m Fix swipe navigation on pages that inherit TouchPage.
+[33mf72bc22[m Changed the Inactivity timer back to the configured value instead of the hard coded value I was using for testing.
+[33mb35a1df[m Added configuration for InactiveVolume and ActiveVolume and set dormant videos to play at InactiveVolume value...
+[33m2c11ba1[m Fixed Auto Play Video Content Scrolling to wait until video has finished playing to scroll on.
+[33ma7ec1cd[m Added Dormant User Content Scrolling and Dynamically loading of media from folders into the application resource dictionary.
+[33m3ebb796[m Add touch page and command interaction for video and image pages.
+[33mcba9b87[m Remove Activity timer double event registration.
+[33mcd35d77[m Make Inactivity Timer Interval configurable
+[33md971854[m Added Inactivity Timer and infrastructure
+[33me12d5e2[m Remove Files
+[33m8a71276[m Clean Up
+[33md732596[m Fixing Source Control
+[33m1acf085[m Added Video Controls for the video page.
+[33md136dff[m Added Review Content
+[33m73b2f03[m Added Video Controls for the video page.
+[33m28d1641[m Added Awards
+[33me926f37[m Video
+[33mcedd865[m Added Price Quote Form
+[33ma061fc2[m Setup Navigation ViewModel and test it on HowItWorks page.
+[33mf4ea435[m Added Video
+[33mc2ef1b6[m Adding Image Content
+[33md3b2215[m Added button navigation
+[33meb2e584[m Visual Cleanup
+[33md0077aa[m Visual Cleanup
+[33mc9e6a7f[m Fix Page Image Urls
+[33m75b7c7f[m Initial Checkin
