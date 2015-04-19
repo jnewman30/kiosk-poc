@@ -15,6 +15,7 @@ namespace KioskDisplay.ViewModels
     {
         private DispatcherTimer _autoScrollTimer;
         private DispatcherTimer _videoTransitionTimer;
+        private bool _active = false;
 
         public DormantViewModel() : base()
         {
@@ -39,33 +40,57 @@ namespace KioskDisplay.ViewModels
 
         }
 
+        ~DormantViewModel()
+        {
+            StopTimers();
+        }
+
+        private void StopTimers()
+        {
+            if (_autoScrollTimer != null)
+            {
+                _autoScrollTimer.Stop();
+            }
+            if (_videoTransitionTimer != null)
+            {
+                _videoTransitionTimer.Stop();
+            }
+        }
+
         protected override System.Windows.ResourceDictionary LoadContent()
         {
             return GetResourceDictionaryFromFolder("./Resources/Dormant");
         }
 
-        private void SetMediaVolume(double volume)
+        private void SetMediaVolume()
         {
             if(CurrentItem is MediaElement)
             {
                 var media = (MediaElement)CurrentItem;
                 if(media.Source.IsVideo())
                 {
-                    media.Volume = volume;
+                    if (_active)
+                    {
+                        media.Volume = LocalConfiguration.Settings.ActiveVolume;
+                    }
+                    else
+                    {
+                        media.Volume = LocalConfiguration.Settings.InactiveVolume;
+                    }
                 }
             }
         }
 
         protected override void OnUserActive()
         {
-            //_autoScrollTimer.Stop();
-            SetMediaVolume(LocalConfiguration.Settings.ActiveVolume);
+            _active = true;
+            SetMediaVolume();
         }
 
         protected override void OnUserIdle()
         {
-            //_autoScrollTimer.Start();
-            SetMediaVolume(LocalConfiguration.Settings.InactiveVolume);
+            _active = false;
+            SetMediaVolume();
         }
 
         protected override void OnCurrentItemChanged(object oldItem, object newItem)
@@ -83,6 +108,7 @@ namespace KioskDisplay.ViewModels
                 var newMedia = (MediaElement)newItem;
                 if(newMedia.Source.IsVideo())
                 {
+                    SetMediaVolume();
                     newMedia.Play();
                 }
             }
@@ -129,8 +155,7 @@ namespace KioskDisplay.ViewModels
 
         private void UnloadCommandExecute(object p)
         {
-            _autoScrollTimer.Stop();
-            _videoTransitionTimer.Stop();
+            StopTimers();
         }
     }
 }
