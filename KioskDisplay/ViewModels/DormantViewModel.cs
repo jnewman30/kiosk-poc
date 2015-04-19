@@ -44,14 +44,28 @@ namespace KioskDisplay.ViewModels
             return GetResourceDictionaryFromFolder("./Resources/Dormant");
         }
 
+        private void SetMediaVolume(double volume)
+        {
+            if(CurrentItem is MediaElement)
+            {
+                var media = (MediaElement)CurrentItem;
+                if(media.Source.IsVideo())
+                {
+                    media.Volume = volume;
+                }
+            }
+        }
+
         protected override void OnUserActive()
         {
-            _autoScrollTimer.Stop();
+            //_autoScrollTimer.Stop();
+            SetMediaVolume(LocalConfiguration.Settings.ActiveVolume);
         }
 
         protected override void OnUserIdle()
         {
-            _autoScrollTimer.Start();
+            //_autoScrollTimer.Start();
+            SetMediaVolume(LocalConfiguration.Settings.InactiveVolume);
         }
 
         protected override void OnCurrentItemChanged(object oldItem, object newItem)
@@ -69,7 +83,6 @@ namespace KioskDisplay.ViewModels
                 var newMedia = (MediaElement)newItem;
                 if(newMedia.Source.IsVideo())
                 {
-                    newMedia.Volume = LocalConfiguration.Settings.InactiveVolume;
                     newMedia.Play();
                 }
             }
