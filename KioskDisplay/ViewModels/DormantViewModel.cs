@@ -68,7 +68,8 @@ namespace KioskDisplay.ViewModels
             {
                 var newMedia = (MediaElement)newItem;
                 if(newMedia.Source.IsVideo())
-                { 
+                {
+                    newMedia.Volume = LocalConfiguration.Settings.InactiveVolume;
                     newMedia.Play();
                 }
             }
