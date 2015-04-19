@@ -12,6 +12,7 @@
   <SolidColorBrush x:Key="DisabledVisualElement" Color="{StaticResource Color_009}" Opacity="0.6" />
   <SolidColorBrush x:Key="ValidationErrorElement" Color="{StaticResource Color_028}" />
   <SolidColorBrush x:Key="CaretForegroundBrush" Color="{StaticResource Color_022}" />
+  <SolidColorBrush x:Key="HighlightForegroundBrush" Color="{StaticResource Color_046}" />
 
   <!-- Scrollbar/ScrollViewer Brushes -->
   <SolidColorBrush x:Key="HScrollbarThumbBackgroundBrush" Color="{StaticResource Color_005}" />
