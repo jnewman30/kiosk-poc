@@ -1,10 +1,8 @@
 ﻿using KioskDisplay.Commands;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Windows;
 using System.Windows.Input;
-using System.Linq;
 
 namespace KioskDisplay.ViewModels
 {
@@ -60,9 +58,7 @@ namespace KioskDisplay.ViewModels
 
         protected abstract ResourceDictionary LoadContent();
 
-        protected virtual void OnCurrentItemChanged(object oldItem, object newItem)
-        {
-        }
+        protected virtual void OnCurrentItemChanged(object oldItem, object newItem) { }
 
         public RelayCommand _nextItemCommand;
         public ICommand NextItemCommand

@@ -1,6 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Data;
-using System.Windows.Navigation;
 
 namespace KioskDisplay
 {
@@ -12,22 +10,6 @@ namespace KioskDisplay
         public Shell()
         {
             InitializeComponent();
-        }
-
-        private void mainFrame_SourceUpdated(object sender, DataTransferEventArgs e)
-        {
-            try
-            {
-                var navService = NavigationService.GetNavigationService(e.TargetObject);
-                navService.RemoveBackEntry();
-
-                var application = (KioskDisplay.App)App.Current;
-                application.RestartInactivityTimer();
-            }
-            finally
-            {
-                e.Handled = true;
-            }
         }
     }
 }

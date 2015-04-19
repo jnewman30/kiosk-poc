@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace KioskDisplay.Pages
 {
-    public abstract class TouchPage : Page
+    public abstract class TouchPage : PageBase
     {
         protected TouchPoint TouchStart;
         protected bool AlreadySwiped = false;

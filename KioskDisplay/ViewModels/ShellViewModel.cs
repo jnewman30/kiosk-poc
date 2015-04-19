@@ -1,6 +1,7 @@
 ﻿using KioskDisplay.Commands;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace KioskDisplay.ViewModels
@@ -17,19 +18,19 @@ namespace KioskDisplay.ViewModels
             set { SetValue(StatusMessageProperty, value); }
         }
 
-        public static DependencyProperty CurrentPageProperty =
-            DependencyProperty.Register("CurrentPage",
+        public static DependencyProperty CurrentPageUrlProperty =
+            DependencyProperty.Register("CurrentPageUrl",
                 typeof(string), typeof(ShellViewModel));
 
-        public string CurrentPage
+        public string CurrentPageUrl
         {
-            get { return (string)GetValue(CurrentPageProperty); }
-            set { SetValue(CurrentPageProperty, value); }
+            get { return (string)GetValue(CurrentPageUrlProperty); }
+            set { SetValue(CurrentPageUrlProperty, value); }
         }
 
         public ShellViewModel() : base()
         {
-            CurrentPage = "./Pages/HowItWorks.xaml";
+            CurrentPageUrl = "./Pages/HowItWorks.xaml";
 
             if(DesignerProperties.GetIsInDesignMode(this))
             {
@@ -54,7 +55,7 @@ namespace KioskDisplay.ViewModels
 
         protected void ExecuteNavigateToCommand(object parameter)
         {
-            CurrentPage = parameter.ToString();
+            CurrentPageUrl = parameter.ToString();
         }
 
         protected bool CanExecuteNavigateToCommand(object parameter)
@@ -69,7 +70,7 @@ namespace KioskDisplay.ViewModels
         protected override void OnUserIdle()
         {
             StatusMessage = "User Idle";
-            CurrentPage = "./Pages/Dormant.xaml";
+            CurrentPageUrl = "./Pages/Dormant.xaml";
         }
 
         protected override void OnUserActive()

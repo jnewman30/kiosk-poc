@@ -23,8 +23,6 @@ namespace KioskDisplay.ViewModels
             var application = (KioskDisplay.App)Application.Current;
             application.UserActive += application_UserActive;
             application.UserIdle += application_UserIdle;
-
-            //application.RestartInactivityTimer();
         }
 
         void application_UserIdle(object sender, EventArgs e)
@@ -73,6 +71,8 @@ namespace KioskDisplay.ViewModels
 
         protected virtual void MediaEnded(object sender, RoutedEventArgs e) { }
 
+        protected virtual void MediaFailed(object sender, RoutedEventArgs e) { }
+
         protected ResourceDictionary GetResourceDictionary(string name)
         {
             try
@@ -120,7 +120,7 @@ namespace KioskDisplay.ViewModels
                     {
                         content.MediaOpened += MediaOpened;
                         content.MediaEnded += MediaEnded;
-                        content.MediaFailed += MediaEnded;
+                        content.MediaFailed += MediaFailed;
                     }
 
                     resources.Add(key, content);

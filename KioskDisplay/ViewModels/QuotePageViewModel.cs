@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 
 namespace KioskDisplay.ViewModels
@@ -7,6 +8,10 @@ namespace KioskDisplay.ViewModels
 	{
         public QuotePageViewModel() : base()
         {
+            if(DesignerProperties.GetIsInDesignMode(this))
+            {
+                return;
+            }
             RestartInactivityTimer();
         }
 
