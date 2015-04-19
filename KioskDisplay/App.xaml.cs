@@ -53,22 +53,17 @@ namespace KioskDisplay
             // Only assume activity on mouse and keyboard events...
             var inputEventArgs = e.StagingItem.Input;
             if (inputEventArgs is KeyboardEventArgs ||
-                inputEventArgs is MouseEventArgs || 
+                inputEventArgs is MouseEventArgs ||
                 inputEventArgs is TouchEventArgs ||
                 inputEventArgs is StylusEventArgs)
             {
-                //if (inputEventArgs is MouseEventArgs)
-                //{
-                //    var currentMousePosition = Mouse.GetPosition(App.Current.MainWindow);
-                //    if (currentMousePosition == _inactiveMousePosition)
-                //    {
-                //        return;
-                //    }
-                //}
+                if (inputEventArgs is QueryCursorEventArgs)
+                {
+                    return;
+                }
 
                 // If we have activity restart the timer...
-                _inavtivityTimer.Stop();
-                _inavtivityTimer.Start();
+                RestartInactivityTimer();
 
                 // Fire the user active event...
                 UserActive(this, new EventArgs());
@@ -84,9 +79,19 @@ namespace KioskDisplay
             UserIdle(this, new EventArgs());
         }
 
+        public void RestartInactivityTimer()
+        {
+            if (_inavtivityTimer == null)
+            {
+                return;
+            }
+            StopInactivityTimer();
+            StartInactivityTimer();
+        }
+
         public void StartInactivityTimer()
         {
-            if(_inavtivityTimer == null)
+            if (_inavtivityTimer == null)
             {
                 return;
             }
@@ -95,7 +100,7 @@ namespace KioskDisplay
 
         public void StopInactivityTimer()
         {
-            if(_inavtivityTimer == null)
+            if (_inavtivityTimer == null)
             {
                 return;
             }

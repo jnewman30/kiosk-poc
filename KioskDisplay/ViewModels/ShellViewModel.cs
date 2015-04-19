@@ -27,7 +27,7 @@ namespace KioskDisplay.ViewModels
             set { SetValue(CurrentPageProperty, value); }
         }
 
-        public ShellViewModel()
+        public ShellViewModel() : base()
         {
             CurrentPage = "./Pages/HowItWorks.xaml";
 
@@ -45,11 +45,25 @@ namespace KioskDisplay.ViewModels
                 if(_navigateToCommand == null)
                 {
                     _navigateToCommand = new RelayCommand(
-                        p => CurrentPage = p.ToString(), 
-                        p => !string.IsNullOrEmpty(p.ToString()));
+                        ExecuteNavigateToCommand, 
+                        CanExecuteNavigateToCommand);
                 }
                 return _navigateToCommand;
             }
+        }
+
+        protected void ExecuteNavigateToCommand(object parameter)
+        {
+            CurrentPage = parameter.ToString();
+        }
+
+        protected bool CanExecuteNavigateToCommand(object parameter)
+        {
+            if(parameter == null)
+            {
+                return false;
+            }
+            return !string.IsNullOrEmpty(parameter.ToString());
         }
 
         protected override void OnUserIdle()

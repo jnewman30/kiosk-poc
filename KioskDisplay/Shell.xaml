@@ -31,7 +31,7 @@
                     <Image Source="./Content/logo.jpg" Width="220" Height="100" />
                     
                     <Label>
-                        <TextBlock Text="{Binding StatusMessage}" />
+                        <TextBlock Text="{Binding StatusMessage, UpdateSourceTrigger=PropertyChanged}" />
                     </Label>
                     
                     <Button Content="Price Quote"
@@ -67,8 +67,9 @@
                     BorderThickness="1"
                     Padding="2">
                 <Frame x:Name="mainFrame" 
-                       NavigationUIVisibility="Hidden" 
-                       Source="{Binding CurrentPage}" />
+                       NavigationUIVisibility="Hidden"
+                       SourceUpdated="mainFrame_SourceUpdated"
+                       Source="{Binding CurrentPage, UpdateSourceTrigger=PropertyChanged}" />
             </Border>
         </DockPanel>
     </Border>

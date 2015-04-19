@@ -47,12 +47,15 @@ namespace KioskDisplay.ViewModels
             set { SetValue(SettingsVisibleProperty, value); }
         }
 
-        public SettingsViewModel()
+        public SettingsViewModel() : base()
         {
             if(DesignerProperties.GetIsInDesignMode(this))
             {
                 return;
             }
+
+            RestartInactivityTimer();
+
             Settings = LocalConfiguration.Settings;
             LoginVisible = Visibility.Visible;
             SettingsVisible = Visibility.Collapsed;

@@ -7,6 +7,11 @@ namespace KioskDisplay.ViewModels
 {
     public class VideosViewModel : ScrollerViewModel
     {
+        public VideosViewModel() : base()
+        {
+            RestartInactivityTimer();
+        }
+
         protected override System.Windows.ResourceDictionary LoadContent()
         {
             return GetResourceDictionaryFromFolder("./Resources/Videos");

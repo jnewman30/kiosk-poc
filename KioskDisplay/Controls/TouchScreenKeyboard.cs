@@ -780,8 +780,7 @@ namespace KioskDisplay.Controls
         static void RestartInactivityTimer()
         {
             var application = (KioskDisplay.App)Application.Current;
-            application.StopInactivityTimer();
-            application.StartInactivityTimer();
+            application.RestartInactivityTimer();
         }
 
         static void TouchScreenKeyboard_Deactivated(object sender, EventArgs e)

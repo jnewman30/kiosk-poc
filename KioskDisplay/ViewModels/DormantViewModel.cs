@@ -108,16 +108,18 @@ namespace KioskDisplay.ViewModels
                 var newMedia = (MediaElement)newItem;
                 if(newMedia.Source.IsVideo())
                 {
-                    SetMediaVolume();
                     newMedia.Play();
                 }
             }
         }
 
+        protected override void MediaOpened(object sender, RoutedEventArgs e)
+        {
+            SetMediaVolume();
+        }
+
         protected override void MediaEnded(object sender, RoutedEventArgs e)
         {
-            base.MediaEnded(sender, e);
-
             _videoTransitionTimer.Start();
         }
 
