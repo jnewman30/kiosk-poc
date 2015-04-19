@@ -7,11 +7,6 @@ namespace KioskDisplay.Pages
         public PageBase()
         {
             KeepAlive = false;
-            Unloaded += PageBase_Unloaded;
-        }
-
-        void PageBase_Unloaded(object sender, System.Windows.RoutedEventArgs e)
-        {
         }
     }
 }

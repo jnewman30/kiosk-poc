@@ -6,6 +6,8 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using KioskDisplay.Extensions;
+using KioskDisplay.Commands;
+using System.Windows.Input;
 
 namespace KioskDisplay.ViewModels
 {
@@ -24,6 +26,27 @@ namespace KioskDisplay.ViewModels
             application.UserActive += application_UserActive;
             application.UserIdle += application_UserIdle;
         }
+
+        private RelayCommand _unloadCommand;
+        public ICommand UnloadCommand
+        {
+            get
+            {
+                if (_unloadCommand == null)
+                {
+                    _unloadCommand = new RelayCommand(UnloadCommandExecute);
+                }
+                return _unloadCommand;
+            }
+        }
+
+        private void UnloadCommandExecute(object p)
+        {
+            RestartInactivityTimer();
+            OnUnload();
+        }
+
+        protected virtual void OnUnload() { }
 
         void application_UserIdle(object sender, EventArgs e)
         {

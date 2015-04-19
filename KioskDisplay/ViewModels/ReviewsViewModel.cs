@@ -1,10 +1,15 @@
-﻿
+﻿using System.ComponentModel;
+
 namespace KioskDisplay.ViewModels
 {
     public class ReviewsViewModel : ScrollerViewModel
     {
         public ReviewsViewModel() : base()
         {
+            if(DesignerProperties.GetIsInDesignMode(this))
+            {
+                return;
+            }
             RestartInactivityTimer();
         }
 

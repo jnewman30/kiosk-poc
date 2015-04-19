@@ -28,6 +28,9 @@
         <i:EventTrigger EventName="TouchSwipeRight">
             <i:InvokeCommandAction Command="{Binding PreviousItemCommand}" />
         </i:EventTrigger>
+        <i:EventTrigger EventName="UnLoaded">
+            <i:InvokeCommandAction Command="{Binding UnloadCommand}" />
+        </i:EventTrigger>
     </i:Interaction.Triggers>
 
     <Border Padding="8">

@@ -142,20 +142,7 @@ namespace KioskDisplay.ViewModels
             }
         }
 
-        private RelayCommand _unloadCommand;
-        public ICommand UnloadCommand
-        {
-            get
-            {
-                if(_unloadCommand == null)
-                {
-                    _unloadCommand = new RelayCommand(UnloadCommandExecute);
-                }
-                return _unloadCommand;
-            }
-        }
-
-        private void UnloadCommandExecute(object p)
+        protected override void OnUnload()
         {
             StopTimers();
         }

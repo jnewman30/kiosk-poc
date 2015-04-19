@@ -14,7 +14,6 @@ namespace KioskDisplay
     public partial class App : Application
     {
         private DispatcherTimer _inavtivityTimer;
-        private Point _inactiveMousePosition = new Point(0, 0);
 
         internal event EventHandler UserIdle = delegate { };
         internal event EventHandler UserActive = delegate { };
@@ -73,7 +72,6 @@ namespace KioskDisplay
         void OnInactivity(object sender, EventArgs e)
         {
             _inavtivityTimer.Stop();
-            _inactiveMousePosition = Mouse.GetPosition(App.Current.MainWindow);
 
             // Fire the user idle event...
             UserIdle(this, new EventArgs());

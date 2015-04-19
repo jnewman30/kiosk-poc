@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 
 namespace KioskDisplay.ViewModels
 {
@@ -6,6 +7,10 @@ namespace KioskDisplay.ViewModels
     {
         public HowItWorksViewModel() : base()
         {
+            if(DesignerProperties.GetIsInDesignMode(this))
+            {
+                return;
+            }
             RestartInactivityTimer();
         }
 

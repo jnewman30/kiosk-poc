@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using KioskDisplay.Extensions;
+using System.ComponentModel;
 
 namespace KioskDisplay.ViewModels
 {
@@ -9,6 +10,10 @@ namespace KioskDisplay.ViewModels
     {
         public VideosViewModel() : base()
         {
+            if(DesignerProperties.GetIsInDesignMode(this))
+            {
+                return;
+            }
             RestartInactivityTimer();
         }
 
