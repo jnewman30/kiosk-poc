@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:vm="clr-namespace:KioskDisplay.ViewModels"
-        Title="Shell" Height="600" Width="800"
+        Title="Shell" Height="768" Width="1024"
         WindowStyle="None" WindowState="Maximized">
 
     <Window.Resources>
@@ -28,7 +28,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    
+
     <Window.DataContext>
         <vm:ShellViewModel />
     </Window.DataContext>
@@ -44,10 +44,21 @@
                     VerticalAlignment="Center">
                 <StackPanel>
                     <Image Source="./Content/logo.jpg" Width="220" Height="100" />
-                    
+
                     <!--<Label>
                         <TextBlock Text="{Binding StatusMessage, UpdateSourceTrigger=PropertyChanged}" />
                     </Label>-->
+                    <StackPanel Margin="0,10">
+                        <Line X1="0" Y1="0" X2="120" Y2="0" Margin="4"
+                              StrokeThickness="4" Stroke="{StaticResource Brush04}" 
+                              StrokeEndLineCap="Round" HorizontalAlignment="Center" />
+                        <Line X1="0" Y1="0" X2="160" Y2="0" Margin="4"
+                              StrokeThickness="4" Stroke="{StaticResource Brush04}" 
+                              StrokeEndLineCap="Round" HorizontalAlignment="Center" />
+                        <Line X1="0" Y1="0" X2="200" Y2="0" Margin="4"
+                              StrokeThickness="4" Stroke="{StaticResource Brush04}" 
+                              StrokeEndLineCap="Round" HorizontalAlignment="Center" />
+                    </StackPanel>
                     
                     <Button Content="Request A Price Quote"
                             Command="{Binding NavigateToCommand}" 
@@ -67,12 +78,23 @@
                     <Button Content="Our Reviews"
                             Command="{Binding NavigateToCommand}"
                             CommandParameter=".\Pages\Reviews.xaml" />
-                    <!--<Button Content="Partners"
+                    <Button Content="Partners" Visibility="Collapsed"
                             Command="{Binding NavigateToCommand}"
                             CommandParameter=".\Pages\Partners.xaml" />
-                    <Button Content="Coupons"
+                    <Button Content="Coupons" Visibility="Collapsed"
                             Command="{Binding NavigateToCommand}"
-                            CommandParameter=".\Pages\Coupons.xaml" />-->
+                            CommandParameter=".\Pages\Coupons.xaml" />
+                    <StackPanel Margin="0,10">
+                        <Line X1="0" Y1="0" X2="200" Y2="0" Margin="4"
+                              StrokeThickness="4" Stroke="{StaticResource Brush04}" 
+                              StrokeEndLineCap="Round" HorizontalAlignment="Center" />
+                        <Line X1="0" Y1="0" X2="160" Y2="0" Margin="4"
+                              StrokeThickness="4" Stroke="{StaticResource Brush04}" 
+                              StrokeEndLineCap="Round" HorizontalAlignment="Center" />
+                        <Line X1="0" Y1="0" X2="120" Y2="0" Margin="4"
+                              StrokeThickness="4" Stroke="{StaticResource Brush04}" 
+                              StrokeEndLineCap="Round" HorizontalAlignment="Center" />
+                    </StackPanel>
                     <Button Content="Settings"
                             Style="{StaticResource StealthButton}"
                             Command="{Binding NavigateToCommand}"
