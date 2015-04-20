@@ -45,7 +45,7 @@
                 <StackPanel Orientation="Horizontal" 
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
-                    <Button Style="{StaticResource GlyphButton}" 
+                    <Button Style="{StaticResource GlyphButtonWide}" 
                             Command="{Binding Path=PreviousItemCommand}">
                         <TextBlock>&#xE112;</TextBlock>
                     </Button>
@@ -59,7 +59,7 @@
                             CommandParameter="{Binding ElementName=videoContent, Path=Content}">
                         <TextBlock>&#xE15B;</TextBlock>
                     </Button>
-                    <Button Style="{StaticResource GlyphButton}" 
+                    <Button Style="{StaticResource GlyphButtonWide}" 
                             Command="{Binding Path=NextItemCommand}">
                         <TextBlock>&#xE111;</TextBlock>
                     </Button>

@@ -4,144 +4,149 @@
 			 xmlns:vm="clr-namespace:KioskDisplay.ViewModels"
 			 xmlns:controls="clr-namespace:KioskDisplay.Controls"
 			 StartupUri="Shell.xaml">
-    <Application.Resources>
+	<Application.Resources>
 
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <!-- Dark Theme -->
-                <ResourceDictionary Source="Themes/MetroDark/MetroDark.MSControls.Core.Implicit.xaml" />
-                <ResourceDictionary Source="Themes/MetroDark/MetroDark.MSControls.Toolkit.Implicit.xaml" />
-                <ResourceDictionary Source="Themes/MetroDark/Styles.Shared.xaml" />
-                <ResourceDictionary Source="Controls/TouchScreenKeyboard.xaml" />
-            </ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<!-- Dark Theme -->
+				<ResourceDictionary Source="Themes/MetroDark/MetroDark.MSControls.Core.Implicit.xaml" />
+				<ResourceDictionary Source="Themes/MetroDark/MetroDark.MSControls.Toolkit.Implicit.xaml" />
+				<ResourceDictionary Source="Themes/MetroDark/Styles.Shared.xaml" />
+				<ResourceDictionary Source="Controls/TouchScreenKeyboard.xaml" />
+			</ResourceDictionary.MergedDictionaries>
 
-            <Style TargetType="Window">
-                <Setter Property="Background" Value="Black" />
-            </Style>
-            
-            <Style x:Key="GlyphButton" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
-                <Setter Property="Padding" Value="32,16" />
-                <Setter Property="Margin" Value="8" />
-                <Style.Resources>
-                    <Style TargetType="TextBlock">
-                        <Setter Property="FontSize" Value="32" />
-                        <Setter Property="FontFamily" Value="Segoe UI Symbol" />
-                        <Setter Property="HorizontalAlignment" Value="Center" />
-                        <Setter Property="VerticalAlignment" Value="Center" />
-                    </Style>
-                </Style.Resources>
-            </Style>
+			<Style TargetType="Window">
+				<Setter Property="Background" Value="Black" />
+			</Style>
+			
+			<Style x:Key="GlyphButton" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+				<Setter Property="Padding" Value="32,16" />
+				<Setter Property="Margin" Value="8" />
+				<Style.Resources>
+					<Style TargetType="TextBlock">
+						<Setter Property="FontSize" Value="32" />
+						<Setter Property="FontFamily" Value="Segoe UI Symbol" />
+						<Setter Property="HorizontalAlignment" Value="Center" />
+						<Setter Property="VerticalAlignment" Value="Center" />
+					</Style>
+				</Style.Resources>
+			</Style>
 
-            <Style x:Key="GlyphButtonSmall" TargetType="Button" BasedOn="{StaticResource GlyphButton}">
-                <Setter Property="Padding" Value="24,16" />
-                <Setter Property="Margin" Value="4" />
-                <Style.Resources>
-                    <Style TargetType="TextBlock">
-                        <Setter Property="FontSize" Value="16" />
-                        <Setter Property="FontFamily" Value="Segoe UI Symbol" />
-                    </Style>
-                </Style.Resources>
-            </Style>
+			<Style x:Key="GlyphButtonWide" TargetType="Button" BasedOn="{StaticResource GlyphButton}">
+				<Setter Property="Padding" Value="64,16" />
+				<Setter Property="Margin" Value="8" />
+			</Style>
 
-            
-            <Style x:Key="PageTitle" TargetType="Label">
-                <Style.Resources>
-                    <Style TargetType="TextBlock">
-                        <Setter Property="FontFamily" Value="Segoe UI" />
-                        <Setter Property="FontSize" Value="18" />
-                        <Setter Property="FontWeight" Value="Bold" />
-                        <Setter Property="Foreground" Value="{StaticResource LightForegroundBrush}" />
-                    </Style>
-                </Style.Resources>
-                <Setter Property="HorizontalAlignment" Value="Center" />
-                <Setter Property="VerticalAlignment" Value="Center" />
-            </Style>
+			<Style x:Key="GlyphButtonSmall" TargetType="Button" BasedOn="{StaticResource GlyphButton}">
+				<Setter Property="Padding" Value="24,16" />
+				<Setter Property="Margin" Value="4" />
+				<Style.Resources>
+					<Style TargetType="TextBlock">
+						<Setter Property="FontSize" Value="16" />
+						<Setter Property="FontFamily" Value="Segoe UI Symbol" />
+					</Style>
+				</Style.Resources>
+			</Style>
 
-            <Style x:Key="QuoteLabel" TargetType="Label">
-                <Setter Property="FontSize" Value="18"/>
-                <Setter Property="FontWeight" Value="SemiBold"/>
-                <Setter Property="FontFamily" Value="Segoe UI"/>
-                <Setter Property="Foreground" Value="{StaticResource TextBoxSelectionForegroundBrush}"/>
-                <Setter Property="Background" Value="{StaticResource TextBoxBackgroundBrush}" />
-            </Style>
+			
+			<Style x:Key="PageTitle" TargetType="Label">
+				<Style.Resources>
+					<Style TargetType="TextBlock">
+						<Setter Property="FontFamily" Value="Segoe UI" />
+						<Setter Property="FontSize" Value="18" />
+						<Setter Property="FontWeight" Value="Bold" />
+						<Setter Property="Foreground" Value="{StaticResource LightForegroundBrush}" />
+					</Style>
+				</Style.Resources>
+				<Setter Property="HorizontalAlignment" Value="Center" />
+				<Setter Property="VerticalAlignment" Value="Center" />
+			</Style>
 
-            <Style x:Key="QuoteTextBox" TargetType="TextBox">
-                <Setter Property="FontSize" Value="18"/>
-                <Setter Property="FontWeight" Value="SemiBold"/>
-                <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
-                <Setter Property="FontFamily" Value="Segoe UI"/>
-            </Style>
+			<Style x:Key="QuoteLabel" TargetType="Label">
+				<Setter Property="FontSize" Value="18"/>
+				<Setter Property="FontWeight" Value="SemiBold"/>
+				<Setter Property="FontFamily" Value="Segoe UI"/>
+				<Setter Property="Foreground" Value="{StaticResource TextBoxSelectionForegroundBrush}"/>
+				<Setter Property="Background" Value="{StaticResource TextBoxBackgroundBrush}" />
+			</Style>
 
-            <Style x:Key="QuoteButton" TargetType="Button">
-                <Setter Property="FontSize" Value="18"/>
-                <Setter Property="FontWeight" Value="SemiBold"/>
-                <Setter Property="Foreground" Value="Black"/>
-                <Setter Property="FontFamily" Value="Segoe UI"/>
-                <Setter Property="Width" Value="80" />
-                <Setter Property="Height" Value="40"/>
-            </Style>
+			<Style x:Key="QuoteTextBox" TargetType="TextBox">
+				<Setter Property="FontSize" Value="18"/>
+				<Setter Property="FontWeight" Value="SemiBold"/>
+				<Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
+				<Setter Property="FontFamily" Value="Segoe UI"/>
+			</Style>
 
-            <Style x:Key="HeadingLabel" TargetType="Label">
-                <Setter Property="FontSize" Value="28"/>
-                <Setter Property="Foreground" Value="{StaticResource LightForegroundBrush}"/>
-                <Setter Property="FontFamily" Value="Segoe UI"/>
-                <Setter Property="HorizontalAlignment" Value="Center" />
-            </Style>
+			<Style x:Key="QuoteButton" TargetType="Button">
+				<Setter Property="FontSize" Value="18"/>
+				<Setter Property="FontWeight" Value="SemiBold"/>
+				<Setter Property="Foreground" Value="Black"/>
+				<Setter Property="FontFamily" Value="Segoe UI"/>
+				<Setter Property="Width" Value="80" />
+				<Setter Property="Height" Value="40"/>
+			</Style>
 
-            <DataTemplate x:Key="QuoteWizardPageTemplate" DataType="{x:Type vm:QuoteWizardPageViewModel}">
-                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Border>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="20" />
-                                <RowDefinition Height="40" />
-                                <RowDefinition Height="20" />
-                                <RowDefinition Height="40" />
-                                <RowDefinition Height="20" />
-                                <RowDefinition Height="40" />
-                                <RowDefinition Height="20" />
-                                <RowDefinition Height="40" />
-                                <RowDefinition Height="20" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="125"/>
-                                <ColumnDefinition Width="200"/>
-                                <ColumnDefinition Width="25"/>
-                                <ColumnDefinition Width="125"/>
-                                <ColumnDefinition Width="200"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
+			<Style x:Key="HeadingLabel" TargetType="Label">
+				<Setter Property="FontSize" Value="28"/>
+				<Setter Property="Foreground" Value="{StaticResource LightForegroundBrush}"/>
+				<Setter Property="FontFamily" Value="Segoe UI"/>
+				<Setter Property="HorizontalAlignment" Value="Center" />
+			</Style>
 
-                            <Label Content="Request a Price Quote" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Style="{StaticResource HeadingLabel}"/>
-                            <Label Content="First Name:" Grid.Row="2" Grid.Column="1" Style="{StaticResource QuoteLabel}"/>
-                            <TextBox Text="{Binding FirstName}" Grid.Row="2" Grid.Column="2" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
-                            <Label Content="Last Name:" Grid.Row="4" Grid.Column="1" Style="{StaticResource QuoteLabel}"/>
-                            <TextBox Text="{Binding LastName}" Grid.Row="4" Grid.Column="2" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
-                            <Label Content="Email:" Grid.Row="6" Grid.Column="1" Style="{StaticResource QuoteLabel}" />
-                            <TextBox Text="{Binding Email}" Grid.Row="6" Grid.Column="2" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
-                            <Label Content="Phone:" Grid.Row="8" Grid.Column="1" Style="{StaticResource QuoteLabel}" />
-                            <TextBox Text="{Binding PhoneNumber}" Grid.Row="8" Grid.Column="2" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
+			<DataTemplate x:Key="QuoteWizardPageTemplate" DataType="{x:Type vm:QuoteWizardPageViewModel}">
+				<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+					<Border>
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition Height="20" />
+								<RowDefinition Height="40" />
+								<RowDefinition Height="20" />
+								<RowDefinition Height="40" />
+								<RowDefinition Height="20" />
+								<RowDefinition Height="40" />
+								<RowDefinition Height="20" />
+								<RowDefinition Height="40" />
+								<RowDefinition Height="20" />
+								<RowDefinition Height="Auto" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="100"/>
+								<ColumnDefinition Width="125"/>
+								<ColumnDefinition Width="200"/>
+								<ColumnDefinition Width="25"/>
+								<ColumnDefinition Width="125"/>
+								<ColumnDefinition Width="200"/>
+								<ColumnDefinition Width="Auto"/>
+							</Grid.ColumnDefinitions>
 
-                            <Label Content="Address:" Grid.Row="2" Grid.Column="4" Style="{StaticResource QuoteLabel}" />
-                            <TextBox Text="{Binding Address}" Grid.Row="2" Grid.Column="5" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
-                            <Label Content="City:" Grid.Row="4" Grid.Column="4" Style="{StaticResource QuoteLabel}" />
-                            <TextBox Text="{Binding City}" Grid.Row="4" Grid.Column="5" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
-                            <Label Content="State:" Grid.Row="6" Grid.Column="4" Style="{StaticResource QuoteLabel}" />
-                            <TextBox Text="{Binding State}" Grid.Row="6" Grid.Column="5" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
-                            <Label Content="Zip Code:" Grid.Row="8" Grid.Column="4" Style="{StaticResource QuoteLabel}" />
-                            <TextBox Text="{Binding ZipCode}" Grid.Row="8" Grid.Column="5" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
+							<Label Content="Request a Price Quote" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Style="{StaticResource HeadingLabel}"/>
+							<Label Content="First Name:" Grid.Row="2" Grid.Column="1" Style="{StaticResource QuoteLabel}"/>
+							<TextBox Text="{Binding FirstName}" Grid.Row="2" Grid.Column="2" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
+							<Label Content="Last Name:" Grid.Row="4" Grid.Column="1" Style="{StaticResource QuoteLabel}"/>
+							<TextBox Text="{Binding LastName}" Grid.Row="4" Grid.Column="2" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
+							<Label Content="Email:" Grid.Row="6" Grid.Column="1" Style="{StaticResource QuoteLabel}" />
+							<TextBox Text="{Binding Email}" Grid.Row="6" Grid.Column="2" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
+							<Label Content="Phone:" Grid.Row="8" Grid.Column="1" Style="{StaticResource QuoteLabel}" />
+							<TextBox Text="{Binding PhoneNumber}" Grid.Row="8" Grid.Column="2" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
 
-                            <Button Name="SubmitButton" Content="Submit" Grid.Row="10" Grid.Column="5" 
-                                    Style="{StaticResource QuoteButton}" 
-                                    Command="{Binding SendEmailCommand}" />
-                        </Grid>
-                    </Border>
-                </StackPanel>
-            </DataTemplate>
+							<Label Content="Address:" Grid.Row="2" Grid.Column="4" Style="{StaticResource QuoteLabel}" />
+							<TextBox Text="{Binding Address}" Grid.Row="2" Grid.Column="5" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
+							<Label Content="City:" Grid.Row="4" Grid.Column="4" Style="{StaticResource QuoteLabel}" />
+							<TextBox Text="{Binding City}" Grid.Row="4" Grid.Column="5" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
+							<Label Content="State:" Grid.Row="6" Grid.Column="4" Style="{StaticResource QuoteLabel}" />
+							<TextBox Text="{Binding State}" Grid.Row="6" Grid.Column="5" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
+							<Label Content="Zip Code:" Grid.Row="8" Grid.Column="4" Style="{StaticResource QuoteLabel}" />
+							<TextBox Text="{Binding ZipCode}" Grid.Row="8" Grid.Column="5" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
 
-        </ResourceDictionary>
-    </Application.Resources>
+							<Button Name="SubmitButton" Content="Submit" Grid.Row="10" Grid.Column="5" 
+									Style="{StaticResource QuoteButton}" 
+									Command="{Binding SendEmailCommand}" />
+						</Grid>
+					</Border>
+				</StackPanel>
+			</DataTemplate>
+
+		</ResourceDictionary>
+	</Application.Resources>
 </Application>
