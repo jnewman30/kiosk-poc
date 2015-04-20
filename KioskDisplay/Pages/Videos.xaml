@@ -45,19 +45,23 @@
                 <StackPanel Orientation="Horizontal" 
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
-                    <Button Command="{Binding Path=PreviousItemCommand}">
-                        <TextBlock Style="{StaticResource GlyphText}">&#xE112;</TextBlock>
+                    <Button Style="{StaticResource GlyphButton}" 
+                            Command="{Binding Path=PreviousItemCommand}">
+                        <TextBlock>&#xE112;</TextBlock>
                     </Button>
-                    <Button Command="{Binding Path=PlayVideoCommand}"
-                        CommandParameter="{Binding ElementName=videoContent, Path=Content}">
-                        <TextBlock Style="{StaticResource GlyphText}">&#xE102;</TextBlock>
+                    <Button Style="{StaticResource GlyphButton}"
+                            Command="{Binding Path=PlayVideoCommand}"
+                            CommandParameter="{Binding ElementName=videoContent, Path=Content}">
+                        <TextBlock>&#xE102;</TextBlock>
                     </Button>
-                    <Button Command="{Binding Path=StopVideoCommand}"
-                        CommandParameter="{Binding ElementName=videoContent, Path=Content}">
-                        <TextBlock Style="{StaticResource GlyphText}">&#xE15B;</TextBlock>
+                    <Button Style="{StaticResource GlyphButton}" 
+                            Command="{Binding Path=StopVideoCommand}" 
+                            CommandParameter="{Binding ElementName=videoContent, Path=Content}">
+                        <TextBlock>&#xE15B;</TextBlock>
                     </Button>
-                    <Button Command="{Binding Path=NextItemCommand}">
-                        <TextBlock Style="{StaticResource GlyphText}">&#xE111;</TextBlock>
+                    <Button Style="{StaticResource GlyphButton}" 
+                            Command="{Binding Path=NextItemCommand}">
+                        <TextBlock>&#xE111;</TextBlock>
                     </Button>
                 </StackPanel>
             </Border>

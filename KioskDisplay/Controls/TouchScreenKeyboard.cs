@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -33,7 +34,7 @@ namespace KioskDisplay.Controls
 				{
 					return ((PasswordBox)_currentControl).Password;
 				}
-				return "";
+				return string.Empty;
 			}
 			set
 			{
@@ -240,6 +241,7 @@ namespace KioskDisplay.Controls
 			CommandManager.RegisterClassCommandBinding(typeof(TouchScreenKeyboard), cbClear);
 
 		}
+
 		static void RunCommand(object sender, ExecutedRoutedEventArgs e)
 		{
 			if (e.Command == CmdTlide)  //First Row
@@ -686,6 +688,10 @@ namespace KioskDisplay.Controls
 			{
 				return;
 			}
+            if(DesignerProperties.GetIsInDesignMode(_currentControl))
+            {
+                return;
+            }
 
 			var widthTouchKeyboard = _instanceObject.ActualWidth;
 
@@ -720,7 +726,7 @@ namespace KioskDisplay.Controls
 		public static readonly DependencyProperty TouchScreenKeyboardProperty =
 			DependencyProperty.RegisterAttached("TouchScreenKeyboard",
 			typeof(bool), typeof(TouchScreenKeyboard),
-			new UIPropertyMetadata(default(bool), TouchScreenKeyboardPropertyChanged));
+			new UIPropertyMetadata(false, TouchScreenKeyboardPropertyChanged));
 
 		static void TouchScreenKeyboardPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
 		{

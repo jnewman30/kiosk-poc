@@ -49,25 +49,38 @@
             <DockPanel Visibility="{Binding SettingsVisible}">
                 <StackPanel DockPanel.Dock="Top" Orientation="Horizontal"
                         HorizontalAlignment="Center">
-                    <Button DockPanel.Dock="Right" Margin="4"
-                        Command="{Binding CloseCommand}">
+                    <Button DockPanel.Dock="Right" 
+                            Style="{StaticResource GlyphButtonSmall}" 
+                            Command="{Binding CloseCommand}">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Style="{StaticResource GlyphText}"
-                               VerticalAlignment="Center">&#xe21c;</TextBlock>
+                            <TextBlock VerticalAlignment="Center">&#xe21c;</TextBlock>
                             <TextBlock Text="Exit to Windows" VerticalAlignment="Center" />
                         </StackPanel>
                     </Button>
                     <Button DockPanel.Dock="Right" Margin="4"
-                        Command="{Binding SaveSettingsCommand}">
+                            Style="{StaticResource GlyphButtonSmall}"
+                            Command="{Binding SaveSettingsCommand}">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Style="{StaticResource GlyphText}"
-                               VerticalAlignment="Center">&#xe105;</TextBlock>
+                            <TextBlock VerticalAlignment="Center">&#xe105;</TextBlock>
                             <TextBlock Text="Save Settings" VerticalAlignment="Center" />
                         </StackPanel>
                     </Button>
                 </StackPanel>
                 <WrapPanel>
-
+                    
+                    <WrapPanel.Resources>
+                        <Style TargetType="{x:Type xtk:DoubleUpDown}">
+                            <Setter Property="Background" Value="{StaticResource ButtonBackgroundBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource LightForegroundBrush}" />
+                            <Setter Property="Margin" Value="4,8" />
+                            <Setter Property="LayoutTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="2" ScaleY="2" />
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </WrapPanel.Resources>
+                    
                     <Border Margin="8">
                         <DockPanel>
                             <Border DockPanel.Dock="Top">
@@ -88,8 +101,9 @@
                                     <TextBlock Text="Settings Code" />
                                 </Label>
                                 <TextBox Grid.Row="0" Grid.Column="1" MinWidth="100" 
-                                     HorizontalAlignment="Stretch" 
-                                     Text="{Binding Settings.SettingsCode}" />
+                                         HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                                         Text="{Binding Settings.SettingsCode}"
+                                         controls:TouchScreenKeyboard.TouchScreenKeyboard="True" />
                                 <CheckBox Grid.Row="1" Grid.ColumnSpan="2" Visibility="Collapsed"
                                       IsChecked="{Binding Settings.ReplaceWindowsShell}">
                                     <TextBlock Text="Replace Windows Shell" />

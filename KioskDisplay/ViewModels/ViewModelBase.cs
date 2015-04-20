@@ -122,6 +122,11 @@ namespace KioskDisplay.ViewModels
             {
                 var viewModelName = this.GetType().Name;
 
+                if(!Directory.Exists(folder))
+                {
+                    Directory.CreateDirectory(folder);
+                }
+
                 var files = Directory
                     .GetFiles(Path.GetFullPath(folder))
                     .OrderBy(filename => filename);

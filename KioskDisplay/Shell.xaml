@@ -3,14 +3,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:vm="clr-namespace:KioskDisplay.ViewModels"
-        Title="Shell" Height="600" Width="800" Background="Black"
+        Title="Shell" Height="600" Width="800"
         WindowStyle="None" WindowState="Maximized">
 
     <Window.Resources>
         <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
-            <Setter Property="Margin" Value="4,8" />
-            <Setter Property="Padding" Value="4" />
+            <Setter Property="Margin" Value="8" />
+            <Setter Property="Padding" Value="8" />
             <Setter Property="FontSize" Value="20" />
+            <Setter Property="MinHeight" Value="64" />
+        </Style>
+        <Style x:Key="StealthButton" TargetType="Button">
+            <Setter Property="Background" Value="#20222222" />
+            <Setter Property="MinHeight" Value="64" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}"
+                                Padding="{TemplateBinding Padding}"
+                                Margin="{TemplateBinding Margin}">
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Window.Resources>
     
@@ -30,35 +45,36 @@
                 <StackPanel>
                     <Image Source="./Content/logo.jpg" Width="220" Height="100" />
                     
-                    <Label>
+                    <!--<Label>
                         <TextBlock Text="{Binding StatusMessage, UpdateSourceTrigger=PropertyChanged}" />
-                    </Label>
+                    </Label>-->
                     
-                    <Button Content="Price Quote"
+                    <Button Content="Request A Price Quote"
                             Command="{Binding NavigateToCommand}" 
                             CommandParameter=".\Pages\PriceQuote.xaml" />
                     <Button Content="How It Works" 
                             Command="{Binding NavigateToCommand}" 
                             CommandParameter=".\Pages\HowItWorks.xaml" />
-                    <Button Content="Awards" 
+                    <Button Content="Our Awards" 
                             Command="{Binding NavigateToCommand}"
                             CommandParameter=".\Pages\Awards.xaml" />
-                    <Button Content="Product Lines" 
+                    <Button Content="Our Product Lines" 
                             Command="{Binding NavigateToCommand}"
                             CommandParameter=".\Pages\ProductLines.xaml" />
-                    <Button Content="Videos"
+                    <Button Content="Window Demonstration Videos"
                             Command="{Binding NavigateToCommand}"
                             CommandParameter=".\Pages\Videos.xaml" />
-                    <Button Content="Reviews"
+                    <Button Content="Our Reviews"
                             Command="{Binding NavigateToCommand}"
                             CommandParameter=".\Pages\Reviews.xaml" />
-                    <Button Content="Partners"
+                    <!--<Button Content="Partners"
                             Command="{Binding NavigateToCommand}"
                             CommandParameter=".\Pages\Partners.xaml" />
                     <Button Content="Coupons"
                             Command="{Binding NavigateToCommand}"
-                            CommandParameter=".\Pages\Coupons.xaml" />
+                            CommandParameter=".\Pages\Coupons.xaml" />-->
                     <Button Content="Settings"
+                            Style="{StaticResource StealthButton}"
                             Command="{Binding NavigateToCommand}"
                             CommandParameter=".\Pages\Settings.xaml" />
                 </StackPanel>
