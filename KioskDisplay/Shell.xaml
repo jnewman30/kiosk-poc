@@ -35,8 +35,8 @@
 
     <Border Background="{StaticResource AccordionBackgroundBrush}"
             BorderBrush="{StaticResource ButtonBorderBrush}"
-            BorderThickness="1"
-            Padding="2">
+            BorderThickness="2"
+            Padding="4">
         <DockPanel LastChildFill="True">
             <Border DockPanel.Dock="Left"
                     Padding="8"
@@ -102,7 +102,7 @@
                 </StackPanel>
             </Border>
             <Border BorderBrush="{StaticResource ButtonBorderBrush}"
-                    BorderThickness="1"
+                    BorderThickness="2"
                     Padding="2">
                 <Frame x:Name="mainFrame" 
                        NavigationUIVisibility="Hidden"
