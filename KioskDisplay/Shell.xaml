@@ -45,9 +45,9 @@
                 <StackPanel>
                     <Image Source="./Content/logo.jpg" Width="220" Height="100" />
 
-                    <!--<Label>
+                    <Label>
                         <TextBlock Text="{Binding StatusMessage, UpdateSourceTrigger=PropertyChanged}" />
-                    </Label>-->
+                    </Label>
                     <StackPanel Margin="0,10">
                         <Line X1="0" Y1="0" X2="120" Y2="0" Margin="4"
                               StrokeThickness="4" Stroke="{StaticResource Brush04}" 
