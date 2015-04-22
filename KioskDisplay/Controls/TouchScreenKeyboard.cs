@@ -564,11 +564,7 @@ namespace KioskDisplay.Controls
 			}
 			else if (e.Command == CmdEnter)
 			{
-				if (_instanceObject != null)
-				{
-					_instanceObject.Close();
-					_instanceObject = null;
-				}
+                CloseInstance();
 				_currentControl.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
 			}
 			else if (e.Command == CmdShift) //Fourth Row
@@ -692,6 +688,10 @@ namespace KioskDisplay.Controls
             {
                 return;
             }
+            if(PresentationSource.FromVisual(_currentControl) == null)
+            {
+                return;
+            }
 
 			var widthTouchKeyboard = _instanceObject.ActualWidth;
 
@@ -776,16 +776,16 @@ namespace KioskDisplay.Controls
 			}
 		}
 
-		static void RestartInactivityTimer()
-		{
-			var application = (App)Application.Current;
-			application.StopInactivityTimer();
-			application.StartInactivityTimer();
-		}
+        //static void RestartInactivityTimer()
+        //{
+        //    var application = (App)Application.Current;
+        //    application.StopInactivityTimer();
+        //    application.StartInactivityTimer();
+        //}
 
 		static void TouchScreenKeyboard_Deactivated(object sender, EventArgs e)
 		{
-			RestartInactivityTimer();
+            //RestartInactivityTimer();
 
 			if (_instanceObject != null)
 			{
@@ -795,7 +795,7 @@ namespace KioskDisplay.Controls
 
 		static void TouchScreenKeyboard_Activated(object sender, EventArgs e)
 		{
-			RestartInactivityTimer();
+            //RestartInactivityTimer();
 
 			if (_instanceObject != null)
 			{
@@ -805,21 +805,21 @@ namespace KioskDisplay.Controls
 
 		static void TouchScreenKeyboard_LocationChanged(object sender, EventArgs e)
 		{
-			RestartInactivityTimer();
+            //RestartInactivityTimer();
 
 			SyncChild();
 		}
 
 		static void tb_LayoutUpdated(object sender, EventArgs e)
 		{
-			RestartInactivityTimer();
+            //RestartInactivityTimer();
 
 			SyncChild();
 		}
 
 		static void OnLostFocus(object sender, RoutedEventArgs e)
 		{
-			RestartInactivityTimer();
+            //RestartInactivityTimer();
 
 			var host = sender as Control;
 			if (host != null)
@@ -829,12 +829,24 @@ namespace KioskDisplay.Controls
 				host.BorderThickness = _previousTextBoxBorderThickness;
 			}
 
-			if (_instanceObject != null)
-			{
-				_instanceObject.Close();
-				_instanceObject = null;
-			}
+            CloseInstance();
 		}
+
+        private static void CloseInstance()
+        {
+            if (_instanceObject != null)
+            {
+                try
+                {
+                    _instanceObject.Close();
+                }
+                catch { }
+                finally
+                {
+                    _instanceObject = null;
+                }
+            }
+        }
 
 		#endregion
 	}

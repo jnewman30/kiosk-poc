@@ -35,7 +35,7 @@
                         <TextBlock Text="Login Code" FontWeight="Bold" />
                     </Label>
                     <TextBox Margin="4" Text="{Binding SettingsCode, UpdateSourceTrigger=PropertyChanged}"
-                             controls:TouchScreenKeyboard.TouchScreenKeyboard="True">
+                             controls:TouchScreenKeyboard.TouchScreenKeyboard="True" AllowDrop="False">
                         <TextBox.InputBindings>
                             <KeyBinding Key="Return" Command="{Binding LoginCommand}" />
                             <KeyBinding Key="Enter" Command="{Binding LoginCommand}" />

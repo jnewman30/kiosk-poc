@@ -20,7 +20,22 @@ namespace KioskDisplay
 
         public App()
         {
+            DispatcherUnhandledException += App_DispatcherUnhandledException;
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             LoadCompleted += App_LoadCompleted;
+        }
+
+        void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            //TODO: Log with NLog.
+            var ex = (Exception)e.ExceptionObject;
+            MessageBox.Show(ex.ToString());
+        }
+
+        void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            //TODO: Log with NLog.
+            MessageBox.Show(e.Exception.ToString());
         }
 
         void App_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
