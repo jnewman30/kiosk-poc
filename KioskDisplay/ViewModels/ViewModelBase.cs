@@ -50,13 +50,7 @@ namespace KioskDisplay.ViewModels
 
         private void CloseTouchKeyboard()
         {
-            var touchKeyboardWindows = App.Current.Windows.Cast<Window>()
-                .Where(w => w is TouchScreenKeyboard);
-
-            foreach(var touchKeyboard in touchKeyboardWindows)
-            {
-                touchKeyboard.Close();
-            }
+            TouchScreenKeyboard.CloseInstance();
         }
 
         protected virtual void OnUnload() { }
