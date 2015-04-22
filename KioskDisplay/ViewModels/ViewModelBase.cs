@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using KioskDisplay.Extensions;
 using KioskDisplay.Commands;
 using System.Windows.Input;
+using KioskDisplay.Controls;
 
 namespace KioskDisplay.ViewModels
 {
@@ -43,7 +44,19 @@ namespace KioskDisplay.ViewModels
         private void UnloadCommandExecute(object p)
         {
             RestartInactivityTimer();
+            CloseTouchKeyboard();
             OnUnload();
+        }
+
+        private void CloseTouchKeyboard()
+        {
+            var touchKeyboardWindows = App.Current.Windows.Cast<Window>()
+                .Where(w => w is TouchScreenKeyboard);
+
+            foreach(var touchKeyboard in touchKeyboardWindows)
+            {
+                touchKeyboard.Close();
+            }
         }
 
         protected virtual void OnUnload() { }
