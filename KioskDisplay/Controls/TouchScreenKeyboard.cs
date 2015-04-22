@@ -849,7 +849,6 @@ namespace KioskDisplay.Controls
 				}
 			}
 		}
-
 		#endregion
 	}
 }
