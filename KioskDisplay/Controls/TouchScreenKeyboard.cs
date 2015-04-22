@@ -688,10 +688,10 @@ namespace KioskDisplay.Controls
 			{
 				return;
 			}
-            if(DesignerProperties.GetIsInDesignMode(_currentControl))
-            {
-                return;
-            }
+			if(DesignerProperties.GetIsInDesignMode(_currentControl))
+			{
+				return;
+			}
 
 			var widthTouchKeyboard = _instanceObject.ActualWidth;
 

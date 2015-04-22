@@ -1,6 +1,8 @@
-﻿using System.Windows.Input;
+﻿using System.IO;
+using System.Windows.Input;
 using KioskDisplay.Commands;
 using NLog;
+using NLog.Targets;
 
 namespace KioskDisplay.ViewModels
 {
@@ -10,7 +12,7 @@ namespace KioskDisplay.ViewModels
 
 		public string LastName { get; set; }
 
-		public string Email { get; set; }
+		public string EmailAddress { get; set; }
 
 		public string PhoneNumber { get; set; }
 
@@ -25,18 +27,7 @@ namespace KioskDisplay.ViewModels
 		private RelayCommand _sendEmailCommand;
 		public ICommand SendEmailCommand
 		{
-			get
-			{
-
-
-				if (_sendEmailCommand == null)
-				{
-					_sendEmailCommand = new RelayCommand(ExecuteEmail, CanExecuteEmail);
-				}
-
-				return _sendEmailCommand;
-			}
-
+			get { return _sendEmailCommand ?? (_sendEmailCommand = new RelayCommand(ExecuteEmail, CanExecuteEmail)); }
 		}
 
 		private static bool CanExecuteEmail(object obj)
@@ -44,22 +35,25 @@ namespace KioskDisplay.ViewModels
 			return true;
 		}
 
-		private static void ExecuteEmail(object obj)
+		private void ExecuteEmail(object obj)
 		{
+			var html = XmlHelper.Transform(this, @".\Resources\Prospect.xslt");
+			var autoResponseBody = File.ReadAllText(@".\Resources\AutoResponseEmailBody.html");
+
 			var emailLogger = LogManager.GetLogger("email");
-			emailLogger.Log(LogLevel.Info, "Test");
+			var fileLogger = LogManager.GetLogger("file");
 
-			//var message = new MailMessage();
-			//message.To.Add(new MailAddress(string.Format("{0} <{1}>", "Erik Gabbard", "erikgabbard@gmail.com")));
-			//message.From = new MailAddress("erikgabbard@gmail.com");
+			//send the prospect data email
+			emailLogger.Log(LogLevel.Info, html);
+			fileLogger.Log(LogLevel.Info, "");
 
-			//var smtp = new SmtpClient
-			//{
-			//	Host = "smtp.gmail.com",
-
-			//};
-
-			//smtp.Send(message);
+			//send the autoresponse
+			var mailTarget = (MailTarget)LogManager.Configuration.FindTargetByName("gmail");
+			if (!string.IsNullOrEmpty(EmailAddress))
+			{
+				mailTarget.To = EmailAddress;
+				emailLogger.Log(LogLevel.Info, autoResponseBody);
+			}
 		}
 	}
 }
