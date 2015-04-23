@@ -230,7 +230,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Resource Include="Resources\Prospect.xslt" />
+    <Content Include="Resources\Prospect.xslt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\readme.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

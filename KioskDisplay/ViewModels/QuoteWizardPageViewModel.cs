@@ -16,13 +16,13 @@ namespace KioskDisplay.ViewModels
 
 		public string PhoneNumber { get; set; }
 
-		public string Address { get; set; }
+		//public string Address { get; set; }
 
-		public string City { get; set; }
+		//public string City { get; set; }
 
-		public string State { get; set; }
+		//public string State { get; set; }
 
-		public string ZipCode { get; set; }
+		//public string ZipCode { get; set; }
 
 		private RelayCommand _sendEmailCommand;
 		public ICommand SendEmailCommand
@@ -37,6 +37,13 @@ namespace KioskDisplay.ViewModels
 
 		private void ExecuteEmail(object obj)
 		{
+#if DEBUG
+			FirstName = "Erik";
+			LastName = "Gabbard";
+			EmailAddress = "erikgabbard@gmail.com";
+			PhoneNumber = "10234567890";
+#endif
+
 			var html = XmlHelper.Transform(this, @".\Resources\Prospect.xslt");
 			var autoResponseBody = File.ReadAllText(@".\Resources\AutoResponseEmailBody.html");
 
