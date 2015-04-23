@@ -834,7 +834,7 @@ namespace KioskDisplay.Controls
 			CloseInstance();
 		}
 
-		private static void CloseInstance()
+		public static void CloseInstance()
 		{
 			if (_instanceObject != null)
 			{
