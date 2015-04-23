@@ -104,6 +104,7 @@
     <Compile Include="Controls\MediaContentDataTemplateSelector.cs" />
     <Compile Include="Controls\QuotePageDataTemplateSelector.cs" />
     <Compile Include="Controls\TouchScreenKeyboard.cs" />
+    <Compile Include="Extensions\TextValidatorExtensions.cs" />
     <Compile Include="Extensions\UriExtensions.cs" />
     <Compile Include="LocalConfiguration.cs" />
     <Compile Include="Pages\Awards.xaml.cs">
@@ -172,6 +173,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <Resource Include="Content\Error.png" />
     <Content Include="Resources\AutoResponseEmailBody.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
