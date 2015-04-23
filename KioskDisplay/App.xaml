@@ -4,137 +4,165 @@
 			 xmlns:vm="clr-namespace:KioskDisplay.ViewModels"
 			 xmlns:controls="clr-namespace:KioskDisplay.Controls"
 			 StartupUri="Shell.xaml">
-	<Application.Resources>
+    <Application.Resources>
 
-		<ResourceDictionary>
-			<ResourceDictionary.MergedDictionaries>
-				<!-- Dark Theme -->
-				<ResourceDictionary Source="Themes/MetroDark/MetroDark.MSControls.Core.Implicit.xaml" />
-				<ResourceDictionary Source="Themes/MetroDark/MetroDark.MSControls.Toolkit.Implicit.xaml" />
-				<ResourceDictionary Source="Themes/MetroDark/Styles.Shared.xaml" />
-				<ResourceDictionary Source="Controls/TouchScreenKeyboard.xaml" />
-			</ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Dark Theme -->
+                <ResourceDictionary Source="Themes/MetroDark/MetroDark.MSControls.Core.Implicit.xaml" />
+                <ResourceDictionary Source="Themes/MetroDark/MetroDark.MSControls.Toolkit.Implicit.xaml" />
+                <ResourceDictionary Source="Themes/MetroDark/Styles.Shared.xaml" />
+                <ResourceDictionary Source="Controls/TouchScreenKeyboard.xaml" />
+            </ResourceDictionary.MergedDictionaries>
 
-			<Style TargetType="Window">
-				<Setter Property="Background" Value="Black" />
-			</Style>
-			
-			<Style x:Key="GlyphButton" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
-				<Setter Property="Padding" Value="32,16" />
-				<Setter Property="Margin" Value="8" />
-				<Style.Resources>
-					<Style TargetType="TextBlock">
-						<Setter Property="FontSize" Value="32" />
-						<Setter Property="FontFamily" Value="Segoe UI Symbol" />
-						<Setter Property="HorizontalAlignment" Value="Center" />
-						<Setter Property="VerticalAlignment" Value="Center" />
-					</Style>
-				</Style.Resources>
-			</Style>
+            <Style TargetType="Window">
+                <Setter Property="Background" Value="Black" />
+            </Style>
 
-			<Style x:Key="GlyphButtonWide" TargetType="Button" BasedOn="{StaticResource GlyphButton}">
-				<Setter Property="Padding" Value="64,16" />
-				<Setter Property="Margin" Value="8" />
-			</Style>
+            <Style x:Key="GlyphButton" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+                <Setter Property="Padding" Value="32,16" />
+                <Setter Property="Margin" Value="8" />
+                <Style.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontSize" Value="32" />
+                        <Setter Property="FontFamily" Value="Segoe UI Symbol" />
+                        <Setter Property="HorizontalAlignment" Value="Center" />
+                        <Setter Property="VerticalAlignment" Value="Center" />
+                    </Style>
+                </Style.Resources>
+            </Style>
 
-			<Style x:Key="GlyphButtonSmall" TargetType="Button" BasedOn="{StaticResource GlyphButton}">
-				<Setter Property="Padding" Value="24,16" />
-				<Setter Property="Margin" Value="4" />
-				<Style.Resources>
-					<Style TargetType="TextBlock">
-						<Setter Property="FontSize" Value="16" />
-						<Setter Property="FontFamily" Value="Segoe UI Symbol" />
-					</Style>
-				</Style.Resources>
-			</Style>
+            <Style x:Key="GlyphButtonWide" TargetType="Button" BasedOn="{StaticResource GlyphButton}">
+                <Setter Property="Padding" Value="64,16" />
+                <Setter Property="Margin" Value="8" />
+            </Style>
 
-			
-			<Style x:Key="PageTitle" TargetType="Label">
-				<Style.Resources>
-					<Style TargetType="TextBlock">
-						<Setter Property="FontFamily" Value="Segoe UI" />
-						<Setter Property="FontSize" Value="18" />
-						<Setter Property="FontWeight" Value="Bold" />
-						<Setter Property="Foreground" Value="{StaticResource LightForegroundBrush}" />
-					</Style>
-				</Style.Resources>
-				<Setter Property="HorizontalAlignment" Value="Center" />
-				<Setter Property="VerticalAlignment" Value="Center" />
-			</Style>
+            <Style x:Key="GlyphButtonSmall" TargetType="Button" BasedOn="{StaticResource GlyphButton}">
+                <Setter Property="Padding" Value="24,16" />
+                <Setter Property="Margin" Value="4" />
+                <Style.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontSize" Value="16" />
+                        <Setter Property="FontFamily" Value="Segoe UI Symbol" />
+                    </Style>
+                </Style.Resources>
+            </Style>
 
-			<Style x:Key="QuoteLabel" TargetType="Label">
-				<Setter Property="FontSize" Value="18"/>
-				<Setter Property="FontWeight" Value="SemiBold"/>
-				<Setter Property="FontFamily" Value="Segoe UI"/>
-				<Setter Property="Foreground" Value="{StaticResource TextBoxSelectionForegroundBrush}"/>
-				<Setter Property="Background" Value="{StaticResource TextBoxBackgroundBrush}" />
-			</Style>
 
-			<Style x:Key="QuoteTextBox" TargetType="TextBox">
-				<Setter Property="FontSize" Value="22"/>
-				<Setter Property="FontWeight" Value="SemiBold"/>
-				<Setter Property="Foreground" Value="DarkSlateGray"/>
-				<Setter Property="FontFamily" Value="Segoe UI"/>
-			</Style>
+            <Style x:Key="PageTitle" TargetType="Label">
+                <Style.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontFamily" Value="Segoe UI" />
+                        <Setter Property="FontSize" Value="18" />
+                        <Setter Property="FontWeight" Value="Bold" />
+                        <Setter Property="Foreground" Value="{StaticResource LightForegroundBrush}" />
+                    </Style>
+                </Style.Resources>
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
 
-			<Style x:Key="QuoteButton" TargetType="Button">
-				<Setter Property="FontSize" Value="18"/>
-				<Setter Property="FontWeight" Value="SemiBold"/>
-				<Setter Property="Foreground" Value="Black"/>
-				<Setter Property="FontFamily" Value="Segoe UI"/>
-				<Setter Property="Width" Value="80" />
-				<Setter Property="Height" Value="40"/>
-			</Style>
+            <Style x:Key="QuoteLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="FontFamily" Value="Segoe UI"/>
+                <Setter Property="Foreground" Value="{StaticResource TextBoxSelectionForegroundBrush}"/>
+                <Setter Property="Background" Value="{StaticResource TextBoxBackgroundBrush}" />
+            </Style>
 
-			<Style x:Key="HeadingLabel" TargetType="Label">
-				<Setter Property="FontSize" Value="28"/>
-				<Setter Property="Foreground" Value="{StaticResource LightForegroundBrush}"/>
-				<Setter Property="FontFamily" Value="Segoe UI"/>
-				<Setter Property="HorizontalAlignment" Value="Center" />
-			</Style>
+            <Style x:Key="QuoteTextBox" TargetType="TextBox">
+                <Setter Property="FontSize" Value="22"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="Foreground" Value="DarkSlateGray"/>
+                <Setter Property="FontFamily" Value="Segoe UI"/>
+            </Style>
 
-			<DataTemplate x:Key="QuoteWizardPageTemplate" DataType="{x:Type vm:QuoteWizardPageViewModel}">
-				<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-					<Border>
-						<Grid>
-							<Grid.RowDefinitions>
-								<RowDefinition Height="Auto" />
-								<RowDefinition Height="20" />
-								<RowDefinition Height="40" />
-								<RowDefinition Height="20" />
-								<RowDefinition Height="40" />
-								<RowDefinition Height="50" />
-								<RowDefinition Height="40" />
-								<!--<RowDefinition Height="20" />
+            <Style x:Key="QuoteButton" TargetType="Button">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="FontFamily" Value="Segoe UI"/>
+                <Setter Property="Width" Value="80" />
+                <Setter Property="Height" Value="40"/>
+            </Style>
+
+            <Style x:Key="HeadingLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="28"/>
+                <Setter Property="Foreground" Value="{StaticResource LightForegroundBrush}"/>
+                <Setter Property="FontFamily" Value="Segoe UI"/>
+                <Setter Property="HorizontalAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="TextBoxErrorStyle" TargetType="{x:Type TextBox}">
+                <Setter Property="FontFamily" Value="Arial"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="ForceCursor" Value="False"/>
+                <Setter Property="Foreground" Value="{StaticResource TextColor}"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Padding" Value="3,0,3,0"/>
+                <Setter Property="Margin" Value="2"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <Grid Name="test">
+                                <Border Background="Red" 
+                                        BorderBrush="#d99" x:Name="Bd" CornerRadius="4"
+                                        BorderThickness="2">
+                                    <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+                                </Border>
+                                <Image Name="ErrorImage" Width="24" Height="24" Margin="0,0,4,0"
+                                       Source="Content/Error.png" HorizontalAlignment="Right">
+                                </Image>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <DataTemplate x:Key="QuoteWizardPageTemplate" DataType="{x:Type vm:QuoteWizardPageViewModel}">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Border>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="40" />
+                                <!--<RowDefinition Height="20" />
 								<RowDefinition Height="40" />
 								<RowDefinition Height="20" />-->
-								<RowDefinition Height="Auto" />
-							</Grid.RowDefinitions>
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="Auto"/>
-								<ColumnDefinition Width="150"/>
-								<ColumnDefinition Width="225"/>
-								<ColumnDefinition Width="50"/>
-								<ColumnDefinition Width="150"/>
-								<ColumnDefinition Width="225"/>
-								<ColumnDefinition Width="Auto"/>
-							</Grid.ColumnDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="225"/>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="225"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
 
-							<Label Content="Request a Price Quote" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Style="{StaticResource HeadingLabel}"/>
-							
+                            <Label Content="Request a Price Quote" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Style="{StaticResource HeadingLabel}"/>
+
                             <Label Content="First Name:" Grid.Row="2" Grid.Column="1" Style="{StaticResource QuoteLabel}"/>
-							<TextBox Text="{Binding FirstName}" Grid.Row="2" Grid.Column="2" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
-							
-                            <Label Content="Last Name:" Grid.Row="2" Grid.Column="4" Style="{StaticResource QuoteLabel}"/>
-							<TextBox Text="{Binding LastName}" Grid.Row="2" Grid.Column="5" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
-							
-                            <Label Content="Email Address:" Grid.Row="4" Grid.Column="1" Style="{StaticResource QuoteLabel}" />
-							<TextBox Text="{Binding EmailAddress}" Grid.Row="4" Grid.Column="2" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
-							
-                            <Label Content="Phone:" Grid.Row="4" Grid.Column="4" Style="{StaticResource QuoteLabel}" />
-							<TextBox Text="{Binding PhoneNumber}" Grid.Row="4" Grid.Column="5" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
+                            <TextBox x:Name="tbxFirstName" Text="{Binding FirstName}" Grid.Row="2" Grid.Column="2" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
 
-							<!--<Label Content="Address:" Grid.Row="2" Grid.Column="4" Style="{StaticResource QuoteLabel}" />
+                            <Label Content="Last Name:" Grid.Row="2" Grid.Column="4" Style="{StaticResource QuoteLabel}"/>
+                            <TextBox x:Name="tbxLastName" Text="{Binding LastName}" Grid.Row="2" Grid.Column="5" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
+
+                            <Label Content="Email Address:" Grid.Row="4" Grid.Column="1" Style="{StaticResource QuoteLabel}" />
+                            <TextBox x:Name="tbxEmailAddress" Text="{Binding EmailAddress}" Grid.Row="4" Grid.Column="2" Style="{StaticResource QuoteTextBox}" LostFocus="OnTextBoxLostFocus" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
+
+                            <Label Content="Phone:" Grid.Row="4" Grid.Column="4" Style="{StaticResource QuoteLabel}" />
+                            <TextBox x:Name="tbxPhoneNumber" Text="{Binding PhoneNumber}" Grid.Row="4" Grid.Column="5" Style="{StaticResource QuoteTextBox}" LostFocus="OnTextBoxLostFocus" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
+
+                            <!--<Label Content="Address:" Grid.Row="2" Grid.Column="4" Style="{StaticResource QuoteLabel}" />
 							<TextBox Text="{Binding Address}" Grid.Row="2" Grid.Column="5" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
 							<Label Content="City:" Grid.Row="4" Grid.Column="4" Style="{StaticResource QuoteLabel}" />
 							<TextBox Text="{Binding City}" Grid.Row="4" Grid.Column="5" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>
@@ -143,14 +171,14 @@
 							<Label Content="Zip Code:" Grid.Row="8" Grid.Column="4" Style="{StaticResource QuoteLabel}" />
 							<TextBox Text="{Binding ZipCode}" Grid.Row="8" Grid.Column="5" Style="{StaticResource QuoteTextBox}" controls:TouchScreenKeyboard.TouchScreenKeyboard="True"/>-->
 
-							<Button Name="SubmitButton" Content="Submit" Grid.Row="6" Grid.Column="5" 
+                            <Button Name="SubmitButton" Content="Submit" Grid.Row="6" Grid.Column="5" 
 									Style="{StaticResource QuoteButton}" 
 									Command="{Binding SendEmailCommand}" />
-						</Grid>
-					</Border>
-				</StackPanel>
-			</DataTemplate>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+            </DataTemplate>
 
-		</ResourceDictionary>
-	</Application.Resources>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

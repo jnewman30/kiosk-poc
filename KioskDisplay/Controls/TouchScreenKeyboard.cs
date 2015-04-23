@@ -688,7 +688,7 @@ namespace KioskDisplay.Controls
 			{
 				return;
 			}
-			if(DesignerProperties.GetIsInDesignMode(_currentControl))
+			if (DesignerProperties.GetIsInDesignMode(_currentControl))
 			{
 				return;
 			}
@@ -698,6 +698,7 @@ namespace KioskDisplay.Controls
 			var virtualpoint = new Point(0, _currentControl.ActualHeight + 3);
 			var actualpoint = _currentControl.PointToScreen(virtualpoint);
 
+			//I think the keyboard may crash here because it is drawn off screen.
 			if (widthTouchKeyboard + actualpoint.X > SystemParameters.PrimaryScreenWidth)
 			{
 				var difference = widthTouchKeyboard + actualpoint.X - SystemParameters.PrimaryScreenWidth;

@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Windows.Input;
 using KioskDisplay.Commands;
+using KioskDisplay.Extensions;
 using NLog;
 using NLog.Targets;
 
@@ -50,16 +51,19 @@ namespace KioskDisplay.ViewModels
 			var emailLogger = LogManager.GetLogger("email");
 			var fileLogger = LogManager.GetLogger("file");
 
-			//send the prospect data email
-			emailLogger.Log(LogLevel.Info, html);
-			fileLogger.Log(LogLevel.Info, "");
-
-			//send the autoresponse
-			var mailTarget = (MailTarget)LogManager.Configuration.FindTargetByName("gmail");
-			if (!string.IsNullOrEmpty(EmailAddress))
+			if (EmailAddress.IsValidEmailAddress() && PhoneNumber.IsValidPhoneNumber())
 			{
-				mailTarget.To = EmailAddress;
-				emailLogger.Log(LogLevel.Info, autoResponseBody);
+				//send the prospect data email
+				emailLogger.Log(LogLevel.Info, html);
+				fileLogger.Log(LogLevel.Info, "");
+
+				//send the autoresponse
+				var mailTarget = (MailTarget)LogManager.Configuration.FindTargetByName("gmail");
+				if (!string.IsNullOrEmpty(EmailAddress))
+				{
+					mailTarget.To = EmailAddress;
+					emailLogger.Log(LogLevel.Info, autoResponseBody);
+				}
 			}
 		}
 	}

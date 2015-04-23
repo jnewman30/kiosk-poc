@@ -2,8 +2,10 @@
 using System.Linq;
 using System.Diagnostics;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
+using KioskDisplay.Extensions;
 using Microsoft.Win32;
 
 namespace KioskDisplay
@@ -104,5 +106,27 @@ namespace KioskDisplay
             }
             _inavtivityTimer.Stop();
         }
+
+	    private void OnTextBoxLostFocus(object sender, RoutedEventArgs e)
+	    {
+		    var textBox = sender as TextBox;
+
+		    Debug.Assert(textBox != null, "textBox != null");
+		    switch (textBox.Name)
+		    {
+				case "tbxPhoneNumber":
+				    if (!textBox.Text.IsValidPhoneNumber())
+				    {
+					    textBox.Style = (Style) FindResource("TextBoxErrorStyle");
+				    }
+				    break;
+				case "tbxEmailAddress":
+					if (!textBox.Text.IsValidEmailAddress())
+					{
+						textBox.Style = (Style)FindResource("TextBoxErrorStyle");
+					}
+				    break;
+		    }
+	    }
     }
 }
